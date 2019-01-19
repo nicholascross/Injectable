@@ -29,7 +29,7 @@ private class StaticWebsiteGenerator: Injectable {
     let framework: WebFramework
 
     required init(container: Container) {
-        framework = container.create()
+        framework = container.resolve()
     }
 }
 
@@ -39,7 +39,7 @@ private class DynamicWebsiteGenerator: Injectable {
     let framework: JavaScriptWebFramework
 
     required init(container: Container) {
-        framework = container.create()
+        framework = container.resolve()
     }
 }
 
@@ -56,28 +56,28 @@ class EphemeralLifetimeTests: XCTestCase {
     }
 
     func testEphemeralLifetimeWhenDefault() {
-        let generator1: StaticWebsiteGenerator = container.create(lifetime: .ephemeral)
-        let generator2: StaticWebsiteGenerator = container.create(lifetime: .ephemeral)
+        let generator1: StaticWebsiteGenerator = container.resolve(lifetime: .ephemeral)
+        let generator2: StaticWebsiteGenerator = container.resolve(lifetime: .ephemeral)
 
         XCTAssert(generator1 !== generator2)
         XCTAssert(generator1.framework !== generator2.framework)
     }
 
     func testEphemeralLifetimeWhenExplicit() {
-        let generator1: DynamicWebsiteGenerator = container.create(lifetime: .ephemeral)
-        let generator2: DynamicWebsiteGenerator = container.create(lifetime: .ephemeral)
+        let generator1: DynamicWebsiteGenerator = container.resolve(lifetime: .ephemeral)
+        let generator2: DynamicWebsiteGenerator = container.resolve(lifetime: .ephemeral)
 
         XCTAssert(generator1 !== generator2)
         XCTAssert(generator1.framework !== generator2.framework)
     }
 
     func testEphemeralLifetimeWhenSpecified() {
-        let generator1: StaticWebsiteGenerator = container.create()
-        let generator2: StaticWebsiteGenerator = container.create()
+        let generator1: StaticWebsiteGenerator = container.resolve()
+        let generator2: StaticWebsiteGenerator = container.resolve()
 
         XCTAssert(generator1 === generator2)
 
-        let generator3: StaticWebsiteGenerator = container.create(lifetime: .ephemeral)
+        let generator3: StaticWebsiteGenerator = container.resolve(lifetime: .ephemeral)
 
         XCTAssert(generator1 !== generator3)
     }

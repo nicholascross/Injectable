@@ -21,7 +21,7 @@ private class TestCycle: Injectable {
     }
 
     func didInject(container: Container) {
-        startCycle = container.create()
+        startCycle = container.resolve()
     }
 }
 
@@ -31,7 +31,7 @@ private class TestCycle2: Injectable {
     static let lifetime: Lifetime = .transient
 
     required init(container: Container) {
-        completeCycle = container.create()
+        completeCycle = container.resolve()
     }
 }
 
@@ -48,7 +48,7 @@ class CycleTests: XCTestCase {
     }
 
     func testDependencyInjectionWithCycle() {
-        let objectWithCyclicDependency: TestCycle = container.create()
+        let objectWithCyclicDependency: TestCycle = container.resolve()
         XCTAssert(objectWithCyclicDependency.startCycle.completeCycle === objectWithCyclicDependency)
     }
 

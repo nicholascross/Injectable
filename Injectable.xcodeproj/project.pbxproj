@@ -18,6 +18,11 @@
 		E13831BD21F2F1910081F481 /* EphemeralLifetimeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E13831BC21F2F1910081F481 /* EphemeralLifetimeTests.swift */; };
 		E13831BF21F2F1EE0081F481 /* TransientLifetimeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E13831BE21F2F1EE0081F481 /* TransientLifetimeTests.swift */; };
 		E13831C121F2F2070081F481 /* PersistentLifetimeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E13831C021F2F2070081F481 /* PersistentLifetimeTests.swift */; };
+		E13831C321F3337A0081F481 /* RecursiveLock.swift in Sources */ = {isa = PBXBuildFile; fileRef = E13831C221F3337A0081F481 /* RecursiveLock.swift */; };
+		E13831C521F339D00081F481 /* DependencyStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = E13831C421F339D00081F481 /* DependencyStore.swift */; };
+		E13831C721F33AD20081F481 /* DependencyResolver.swift in Sources */ = {isa = PBXBuildFile; fileRef = E13831C621F33AD20081F481 /* DependencyResolver.swift */; };
+		E13831C921F33B190081F481 /* CustomDependencyResolver.swift in Sources */ = {isa = PBXBuildFile; fileRef = E13831C821F33B190081F481 /* CustomDependencyResolver.swift */; };
+		E13831CB21F33F090081F481 /* CustomParametersTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E13831CA21F33F090081F481 /* CustomParametersTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,6 +50,11 @@
 		E13831BC21F2F1910081F481 /* EphemeralLifetimeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EphemeralLifetimeTests.swift; sourceTree = "<group>"; };
 		E13831BE21F2F1EE0081F481 /* TransientLifetimeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransientLifetimeTests.swift; sourceTree = "<group>"; };
 		E13831C021F2F2070081F481 /* PersistentLifetimeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistentLifetimeTests.swift; sourceTree = "<group>"; };
+		E13831C221F3337A0081F481 /* RecursiveLock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecursiveLock.swift; sourceTree = "<group>"; };
+		E13831C421F339D00081F481 /* DependencyStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DependencyStore.swift; sourceTree = "<group>"; };
+		E13831C621F33AD20081F481 /* DependencyResolver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DependencyResolver.swift; sourceTree = "<group>"; };
+		E13831C821F33B190081F481 /* CustomDependencyResolver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomDependencyResolver.swift; sourceTree = "<group>"; };
+		E13831CA21F33F090081F481 /* CustomParametersTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomParametersTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -93,6 +103,10 @@
 				E13831B421F2E2230081F481 /* Container.swift */,
 				E13831B621F2E27C0081F481 /* Lifetime.swift */,
 				E13831B821F2E2960081F481 /* DependencyContainer.swift */,
+				E13831C221F3337A0081F481 /* RecursiveLock.swift */,
+				E13831C421F339D00081F481 /* DependencyStore.swift */,
+				E13831C621F33AD20081F481 /* DependencyResolver.swift */,
+				E13831C821F33B190081F481 /* CustomDependencyResolver.swift */,
 			);
 			path = Injectable;
 			sourceTree = "<group>";
@@ -106,6 +120,7 @@
 				E13831BC21F2F1910081F481 /* EphemeralLifetimeTests.swift */,
 				E13831BE21F2F1EE0081F481 /* TransientLifetimeTests.swift */,
 				E13831C021F2F2070081F481 /* PersistentLifetimeTests.swift */,
+				E13831CA21F33F090081F481 /* CustomParametersTests.swift */,
 			);
 			path = InjectableTests;
 			sourceTree = "<group>";
@@ -223,6 +238,10 @@
 				E13831B721F2E27C0081F481 /* Lifetime.swift in Sources */,
 				E13831B921F2E2960081F481 /* DependencyContainer.swift in Sources */,
 				E13831B521F2E2230081F481 /* Container.swift in Sources */,
+				E13831C521F339D00081F481 /* DependencyStore.swift in Sources */,
+				E13831C921F33B190081F481 /* CustomDependencyResolver.swift in Sources */,
+				E13831C721F33AD20081F481 /* DependencyResolver.swift in Sources */,
+				E13831C321F3337A0081F481 /* RecursiveLock.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -232,6 +251,7 @@
 			files = (
 				E13831BB21F2E5AF0081F481 /* CycleTests.swift in Sources */,
 				E13831BF21F2F1EE0081F481 /* TransientLifetimeTests.swift in Sources */,
+				E13831CB21F33F090081F481 /* CustomParametersTests.swift in Sources */,
 				E13831BD21F2F1910081F481 /* EphemeralLifetimeTests.swift in Sources */,
 				E13831A721F2C3A40081F481 /* InjectableTests.swift in Sources */,
 				E13831C121F2F2070081F481 /* PersistentLifetimeTests.swift in Sources */,

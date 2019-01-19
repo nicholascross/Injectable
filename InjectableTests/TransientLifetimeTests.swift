@@ -17,7 +17,7 @@ private class Person: Injectable {
     let favourateLanguage: Language
 
     required init(container: Container) {
-        favourateLanguage = container.create()
+        favourateLanguage = container.resolve()
     }
 }
 
@@ -44,41 +44,41 @@ class TransientLifetimeTests: XCTestCase {
     }
 
     func testTransientLifetime() {
-        var person1: Person? = container.create()
-        var person2: Person? = container.create()
+        var person1: Person? = container.resolve()
+        var person2: Person? = container.resolve()
 
         XCTAssert(person1 === person2)
 
-        person1 = container.create(lifetime: .ephemeral)
-        person2 = container.create(lifetime: .ephemeral)
+        person1 = container.resolve(lifetime: .ephemeral)
+        person2 = container.resolve(lifetime: .ephemeral)
 
         XCTAssert(person1 !== person2)
 
-        person1 = container.create()
+        person1 = container.resolve()
 
         XCTAssert(person1 !== person2)
 
-        person2 = container.create()
+        person2 = container.resolve()
 
         XCTAssert(person1 === person2)
     }
 
     func testTransientLifetimeWhenSpecified() {
-        var language1: Language? = container.create(lifetime: .transient)
-        var language2: Language? = container.create(lifetime: .transient)
+        var language1: Language? = container.resolve(lifetime: .transient)
+        var language2: Language? = container.resolve(lifetime: .transient)
 
         XCTAssert(language1 === language2)
 
-        language1 = container.create(lifetime: .ephemeral)
-        language2 = container.create(lifetime: .ephemeral)
+        language1 = container.resolve(lifetime: .ephemeral)
+        language2 = container.resolve(lifetime: .ephemeral)
 
         XCTAssert(language1 !== language2)
 
-        language1 = container.create()
+        language1 = container.resolve()
 
         XCTAssert(language1 !== language2)
 
-        language2 = container.create()
+        language2 = container.resolve()
 
         XCTAssert(language1 === language2)
     }

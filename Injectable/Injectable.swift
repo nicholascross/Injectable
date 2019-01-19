@@ -16,6 +16,11 @@ public protocol Injectable: AnyObject {
     func didInject(container: Container)
 }
 
+public protocol CustomInjectable: Injectable {
+    associatedtype ParameterType
+    init(container: Container, parameter: ParameterType)
+}
+
 public extension Injectable {
     static var lifetime: Lifetime {
         return .ephemeral

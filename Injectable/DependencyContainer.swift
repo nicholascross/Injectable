@@ -8,47 +8,30 @@
 
 import Foundation
 
-public class DependencyContainer: Container {
-
-    private let transientObjects: NSMapTable<NSString, AnyObject> = .strongToWeakObjects()
-    private let persistentObjects: NSMapTable<NSString, AnyObject> = .strongToStrongObjects()
-    private let lock: NSRecursiveLock = .init()
-
+public class DependencyContainer: Container, DependencyStore {
     public static let shared: DependencyContainer = .init()
 
-    public func create<Object: Injectable>(lifetime: Lifetime) -> Object {
-        switch lifetime {
-        case .ephemeral: return ephemeral()
-        case .transient: return transient()
-        case .persistent: return persistent()
-        }
+    let transientObjects: NSMapTable<NSString, AnyObject> = .strongToWeakObjects()
+    let persistentObjects: NSMapTable<NSString, AnyObject> = .strongToStrongObjects()
+    let lock: RecursiveLock = .init()
+
+    private var basicResolver: DependencyResolver!
+    private var customResolver: CustomerDependencyResolver!
+
+    public init() {
+        basicResolver = .init(container: self)
+        customResolver = .init(container: self)
     }
 
-    private func ephemeral<Object: Injectable>() -> Object {
-        return Object(container: self)
+    public func resolve<Object: Injectable>(lifetime: Lifetime) -> Object {
+        return basicResolver.resolve(lifetime: lifetime)
     }
 
-    private func transient<Object: Injectable>() -> Object {
-        return referenced(table: transientObjects)
+    public func resolve<Object: CustomInjectable>(key: String, lifetime: Lifetime) -> Object {
+        return customResolver.resolve(key: key, lifetime: lifetime)
     }
 
-    private func persistent<Object: Injectable>() -> Object {
-        return referenced(table: persistentObjects)
-    }
-
-    private func referenced<Object: Injectable>(table: NSMapTable<NSString, AnyObject>) -> Object {
-        lock.lock()
-        defer { lock.unlock() }
-
-        let key = String(describing: Object.self) as NSString
-
-        if let object = table.object(forKey: key) as? Object {
-            return object
-        }
-
-        let object = Object(container: self)
-        table.setObject(object as AnyObject, forKey: key)
-        object.didInject(container: self)
-        return object
+    public func register<Type: CustomInjectable>(type: Type.Type, key: String, _ provider: @escaping (Container) -> Type.ParameterType) {
+        customResolver.register(type: type, key: key, provider)
     }
 }

@@ -14,7 +14,7 @@ private class Person: Injectable {
     let hobby: Programming
 
     required init(container: Container) {
-        hobby = container.create()
+        hobby = container.resolve()
     }
 }
 
@@ -41,16 +41,16 @@ class PersistentLifetimeTests: XCTestCase {
     }
     
     func testPersistentLifetime() {
-        let person1: Person = container.create()
-        let person2: Person = container.create()
+        let person1: Person = container.resolve()
+        let person2: Person = container.resolve()
 
         XCTAssert(person1 !== person2)
         XCTAssert(person1.hobby === person2.hobby)
     }
 
     func testPersistentLifetimeWhenSpecified() {
-        let person1: Person = container.create(lifetime: .persistent)
-        let person2: Person = container.create(lifetime: .persistent)
+        let person1: Person = container.resolve(lifetime: .persistent)
+        let person2: Person = container.resolve(lifetime: .persistent)
 
         XCTAssert(person1 === person2)
     }

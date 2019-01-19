@@ -14,8 +14,8 @@ private class Ecosystem: Injectable {
     let plants: [Plant]
 
     required init(container: Container) {
-        self.animals = [container.create() as Cat, container.create() as Dog, container.create() as Moose]
-        self.plants = [container.create(), container.create()]
+        self.animals = [container.resolve() as Cat, container.resolve() as Dog, container.resolve() as Moose]
+        self.plants = [container.resolve(), container.resolve()]
     }
 }
 
@@ -23,7 +23,7 @@ private class Animal {
     let genome: Genome
 
     required init(container: Container) {
-        self.genome = container.create()
+        self.genome = container.resolve()
     }
 }
 
@@ -49,7 +49,7 @@ private class Plant: Injectable {
     let genome: Genome
 
     required init(container: Container) {
-        self.genome = container.create()
+        self.genome = container.resolve()
     }
 }
 
@@ -74,7 +74,7 @@ class InjectableTests: XCTestCase {
     }
 
     func testDependencyInjection() {
-        let ecosystem: Ecosystem = container.create()
+        let ecosystem: Ecosystem = container.resolve()
         let cat = ecosystem.animals[0] as? Cat
         let dog = ecosystem.animals[1] as? Dog
         let moose = ecosystem.animals[2] as? Moose
