@@ -11,6 +11,7 @@ import Foundation
 public protocol Container {
     func resolve<Object: Injectable>(lifetime: Lifetime) -> Object
     func resolve<Object: CustomInjectable>(key: String, lifetime: Lifetime) -> Object
+    func resolveInterface<Interface>() -> Interface!
 }
 
 public extension Container {
