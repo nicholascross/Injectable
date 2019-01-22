@@ -51,7 +51,6 @@ class CustomParametersTests: XCTestCase {
     }
 
     func testCustomParameterInjectionAndResolution() {
-        //todo: should pass key to closure
         container.register(type: Programming.self, key: "OldSchool") { _ in "ObjC" }
         container.register(type: Programming.self, key: "NewAge") { _ in "Swift" }
         container.register(type: Person.self, key: "Nick", { _ in 34 })
@@ -65,7 +64,6 @@ class CustomParametersTests: XCTestCase {
     }
     
     func testTransientCustomParameterInjectionAndResolution() {
-        //todo: should pass key to closure
         container.register(type: Programming.self, key: "OldSchool") { _ in "ObjC" }
         container.register(type: Programming.self, key: "NewAge") { _ in "Swift" }
         container.register(type: Person.self, key: "Nick", { _ in 34 })
