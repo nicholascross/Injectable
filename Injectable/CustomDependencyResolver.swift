@@ -26,8 +26,8 @@ class CustomerDependencyResolver {
 
         switch lifetime {
         case .ephemeral: return createCustom(key: customKey)
-        case .transient: return resolveCustom(key: key, table: container.transientObjects)
-        case .persistent: return resolveCustom(key: key, table: container.persistentObjects)
+        case .transient: return resolveCustom(key: customKey, table: container.transientObjects)
+        case .persistent: return resolveCustom(key: customKey, table: container.persistentObjects)
         }
     }
 
