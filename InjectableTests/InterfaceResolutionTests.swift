@@ -41,7 +41,13 @@ class InterfaceResolutionTests: XCTestCase {
         let planet: Planet = container.resolveInterface()
         XCTAssert(planet is Earth)
     }
-    
+
+    func testSimpleRegistration() {
+        container.register(interface: Planet.self, implementation: Earth.self)
+        let planet: Planet = container.resolveInterface()
+        XCTAssert(planet is Earth)
+    }
+
     func testSubClassResolution() {
         container.register(interface: Earth.self) { container in container.resolve() as Venus }
         let planet: Earth = container.resolveInterface()

@@ -48,4 +48,10 @@ public class DependencyContainer: Container, DependencyStore {
     public func register<Interface, Object: Injectable>(interface: Interface.Type, _ resolver: @escaping (Container) -> Object) {
         registeredResolvers[String(describing: interface)] = resolver
     }
+
+    public func register<Interface, Object: Injectable>(interface: Interface.Type, implementation: Object.Type) {
+        register(interface: interface) { container -> Object in
+            return container.resolve()
+        }
+    }
 }
