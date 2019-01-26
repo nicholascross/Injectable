@@ -16,8 +16,8 @@ public class DependencyContainer: Container, DependencyStore {
     let lock: RecursiveLock = .init()
 
     private var basicResolver: DependencyResolver!
-    private var customResolver: CustomerDependencyResolver!
     private var interfaceResolver: InterfaceResolver!
+    private var customResolver: CustomerDependencyResolver!
 
     public init() {
         basicResolver = .init(container: self)
@@ -25,21 +25,25 @@ public class DependencyContainer: Container, DependencyStore {
         interfaceResolver = .init(container: self)
     }
 
-    public func resolve<Object: Injectable>(lifetime: Lifetime) -> Object {
-        return basicResolver.resolve(lifetime: lifetime)
+    public func register<Interface, Object: Injectable>(interface: Interface.Type, implementation: Object.Type) {
+        interfaceResolver.register(interface: interface, implementation: implementation)
     }
 
-    public func resolve<Object: CustomInjectable>(key: String, lifetime: Lifetime) -> Object {
-        return customResolver.resolve(key: key, lifetime: lifetime)
+    public func register<Interface, Object: Injectable>(interface: Interface.Type, _ resolver: @escaping (Container) -> Object) {
+        interfaceResolver.register(interface: interface, resolver)
+    }
+
+    public func register<Interface, Type: CustomInjectable>(interface: Interface.Type, type: Type.Type, key: String, _ provider: @escaping (Container) -> Type.ParameterType) {
+        customResolver.register(type: type, key: key, provider)
+        interfaceResolver.register(interface: interface, type: type, key: key, provider)
     }
 
     public func register<Type: CustomInjectable>(type: Type.Type, key: String, _ provider: @escaping (Container) -> Type.ParameterType) {
         customResolver.register(type: type, key: key, provider)
     }
 
-    public func register<Interface, Type: CustomInjectable>(interface: Interface.Type, type: Type.Type, key: String, _ provider: @escaping (Container) -> Type.ParameterType) {
-        customResolver.register(type: type, key: key, provider)
-        interfaceResolver.register(interface: interface, type: type, key: key, provider)
+    public func resolve<Object: Injectable>(lifetime: Lifetime) -> Object {
+        return basicResolver.resolve(lifetime: lifetime)
     }
 
     public func resolveInterface<Interface>() -> Interface! {
@@ -50,13 +54,8 @@ public class DependencyContainer: Container, DependencyStore {
         return interfaceResolver.resolveInterface(key: key)
     }
 
-    public func register<Interface, Object: Injectable>(interface: Interface.Type, _ resolver: @escaping (Container) -> Object) {
-        interfaceResolver.register(interface: interface, resolver)
+    public func resolve<Object: CustomInjectable>(key: String, lifetime: Lifetime) -> Object {
+        return customResolver.resolve(key: key, lifetime: lifetime)
     }
 
-    public func register<Interface, Object: Injectable>(interface: Interface.Type, implementation: Object.Type) {
-        register(interface: interface) { container -> Object in
-            return container.resolve()
-        }
-    }
 }
