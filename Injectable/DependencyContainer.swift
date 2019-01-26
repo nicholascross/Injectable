@@ -18,6 +18,7 @@ public class DependencyContainer: Container, DependencyStore {
     private var basicResolver: DependencyResolver!
     private var customResolver: CustomerDependencyResolver!
     private var registeredResolvers: [String: (Container) -> Any] = [:]
+    private var registeredCustomResolvers: [String: (Container, String) -> Any] = [:]
 
     public init() {
         basicResolver = .init(container: self)
@@ -36,15 +37,31 @@ public class DependencyContainer: Container, DependencyStore {
         customResolver.register(type: type, key: key, provider)
     }
 
+    public func register<Interface, Type: CustomInjectable>(interface: Interface.Type, type: Type.Type, key: String, _ provider: @escaping (Container) -> Type.ParameterType) {
+        customResolver.register(type: type, key: key, provider)
+        registeredCustomResolvers[String(describing: interface)] = { container, customKey -> Type in
+            return container.resolve(key: customKey)
+        }
+    }
+
     public func resolveInterface<Interface>() -> Interface! {
         let key = String(describing: Interface.self)
         guard let resolver = registeredResolvers[key] else {
             return nil
         }
-        
+
         return resolver(self) as? Interface
     }
-    
+
+    public func resolveInterface<Interface>(key customKey: String) -> Interface! {
+        let key = String(describing: Interface.self)
+        guard let resolver = registeredCustomResolvers[key] else {
+            return nil
+        }
+
+        return resolver(self, customKey) as? Interface
+    }
+
     public func register<Interface, Object: Injectable>(interface: Interface.Type, _ resolver: @escaping (Container) -> Object) {
         registeredResolvers[String(describing: interface)] = resolver
     }

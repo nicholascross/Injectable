@@ -62,16 +62,16 @@ class CustomParametersTests: XCTestCase {
         XCTAssertEqual(nick.hobby.language, "ObjC")
         XCTAssertEqual(jim.hobby.language, "Swift")
     }
-    
+
     func testTransientCustomParameterInjectionAndResolution() {
         container.register(type: Programming.self, key: "OldSchool") { _ in "ObjC" }
         container.register(type: Programming.self, key: "NewAge") { _ in "Swift" }
         container.register(type: Person.self, key: "Nick", { _ in 34 })
         container.register(type: Person.self, key: "Jim", { _ in 25 })
-        
+
         let nick: Person = container.resolve(key: "Nick", lifetime: .transient)
         let jim: Person = container.resolve(key: "Jim", lifetime: .transient)
-        
+
         XCTAssertEqual(nick.hobby.language, "ObjC")
         XCTAssertEqual(jim.hobby.language, "Swift")
     }

@@ -6,7 +6,6 @@
 //  Copyright © 2019 Nicholas Cross. All rights reserved.
 //
 
-
 import Foundation
 import XCTest
 @testable import Injectable
@@ -32,7 +31,7 @@ private class Language: Injectable {
 }
 
 class TransientLifetimeTests: XCTestCase {
-    
+
     var container: DependencyContainer!
 
     override func setUp() {

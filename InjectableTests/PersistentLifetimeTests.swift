@@ -39,7 +39,7 @@ class PersistentLifetimeTests: XCTestCase {
     override func tearDown() {
         container = nil
     }
-    
+
     func testPersistentLifetime() {
         let person1: Person = container.resolve()
         let person2: Person = container.resolve()

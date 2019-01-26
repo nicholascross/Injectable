@@ -44,7 +44,7 @@ private class DynamicWebsiteGenerator: Injectable {
 }
 
 class EphemeralLifetimeTests: XCTestCase {
-    
+
     var container: DependencyContainer!
 
     override func setUp() {
