@@ -109,7 +109,6 @@ class InterfaceResolutionTests: XCTestCase {
         XCTAssertNil(planet)
     }
 
-
     func testInvalidRegistrationWithKey() {
         let planet: Planet! = container.resolveInterface(key: "asdf")
 

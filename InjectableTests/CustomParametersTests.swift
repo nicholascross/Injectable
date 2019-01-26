@@ -107,7 +107,7 @@ class CustomParametersTests: XCTestCase {
         let mock0: MockCustomObject? = container.resolve(key: "test")
         XCTAssertEqual(mock0?.parameter, "missing")
 
-        container.register(type: MockCustomObject.self, key: "test") { container -> String in return "test" }
+        container.register(type: MockCustomObject.self, key: "test") { _ -> String in return "test" }
 
         let mock1: MockCustomObject = container.resolve(key: "test")
 
@@ -118,7 +118,7 @@ class CustomParametersTests: XCTestCase {
     func testObjectCreationOccursOnlyOnceWhenTransient() {
         weak var mock0: MockCustomObject? = container.resolve(key: "test", lifetime: .transient)
 
-        container.register(type: MockCustomObject.self, key: "test") { container -> String in return "test" }
+        container.register(type: MockCustomObject.self, key: "test") { _ -> String in return "test" }
 
         let mock1: MockCustomObject = container.resolve(key: "test", lifetime: .transient)
         let mock2: MockCustomObject = container.resolve(key: "test", lifetime: .transient)
