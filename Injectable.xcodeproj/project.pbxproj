@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		0195EAAF21F5E9A40008A143 /* InterfaceResolutionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0195EAAE21F5E9A40008A143 /* InterfaceResolutionTests.swift */; };
+		E126925321FC4459002FBC01 /* InterfaceResolver.swift in Sources */ = {isa = PBXBuildFile; fileRef = E126925221FC4459002FBC01 /* InterfaceResolver.swift */; };
 		E13831A221F2C3A40081F481 /* Injectable.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E138319821F2C3A40081F481 /* Injectable.framework */; };
 		E13831A721F2C3A40081F481 /* InjectableTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E13831A621F2C3A40081F481 /* InjectableTests.swift */; };
 		E13831A921F2C3A40081F481 /* Injectable.h in Headers */ = {isa = PBXBuildFile; fileRef = E138319B21F2C3A40081F481 /* Injectable.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -38,6 +39,7 @@
 
 /* Begin PBXFileReference section */
 		0195EAAE21F5E9A40008A143 /* InterfaceResolutionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterfaceResolutionTests.swift; sourceTree = "<group>"; };
+		E126925221FC4459002FBC01 /* InterfaceResolver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterfaceResolver.swift; sourceTree = "<group>"; };
 		E138319821F2C3A40081F481 /* Injectable.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Injectable.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E138319B21F2C3A40081F481 /* Injectable.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Injectable.h; sourceTree = "<group>"; };
 		E138319C21F2C3A40081F481 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -109,6 +111,7 @@
 				E13831C421F339D00081F481 /* DependencyStore.swift */,
 				E13831C621F33AD20081F481 /* DependencyResolver.swift */,
 				E13831C821F33B190081F481 /* CustomDependencyResolver.swift */,
+				E126925221FC4459002FBC01 /* InterfaceResolver.swift */,
 			);
 			path = Injectable;
 			sourceTree = "<group>";
@@ -242,6 +245,7 @@
 				E13831B921F2E2960081F481 /* DependencyContainer.swift in Sources */,
 				E13831B521F2E2230081F481 /* Container.swift in Sources */,
 				E13831C521F339D00081F481 /* DependencyStore.swift in Sources */,
+				E126925321FC4459002FBC01 /* InterfaceResolver.swift in Sources */,
 				E13831C921F33B190081F481 /* CustomDependencyResolver.swift in Sources */,
 				E13831C721F33AD20081F481 /* DependencyResolver.swift in Sources */,
 				E13831C321F3337A0081F481 /* RecursiveLock.swift in Sources */,
