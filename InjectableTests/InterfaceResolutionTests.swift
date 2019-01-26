@@ -102,4 +102,17 @@ class InterfaceResolutionTests: XCTestCase {
         mars = container.resolve(key: "2020")
         XCTAssertFalse(mars.inhabitted)
     }
+
+    func testInvalidRegistration() {
+        let planet: Planet! = container.resolveInterface()
+
+        XCTAssertNil(planet)
+    }
+
+
+    func testInvalidRegistrationWithKey() {
+        let planet: Planet! = container.resolveInterface(key: "asdf")
+
+        XCTAssertNil(planet)
+    }
 }
