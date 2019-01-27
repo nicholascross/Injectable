@@ -10,7 +10,7 @@ import Foundation
 import XCTest
 @testable import Injectable
 
-private class Person: Injectable {
+private class Person: InjectableObject {
     static let lifetime: Lifetime = .transient
 
     let favourateLanguage: Language
@@ -20,7 +20,7 @@ private class Person: Injectable {
     }
 }
 
-private class Language: Injectable {
+private class Language: InjectableObject {
     static let lifetime: Lifetime = .persistent
 
     let name: String

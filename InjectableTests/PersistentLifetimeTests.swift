@@ -10,7 +10,7 @@ import Foundation
 import XCTest
 @testable import Injectable
 
-private class Person: Injectable {
+private class Person: InjectableObject {
     let hobby: Programming
 
     required init(container: Container) {
@@ -18,7 +18,7 @@ private class Person: Injectable {
     }
 }
 
-private class Programming: Injectable {
+private class Programming: InjectableObject {
     static let lifetime: Lifetime = .persistent
 
     let language: String

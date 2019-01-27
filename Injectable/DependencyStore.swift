@@ -15,17 +15,29 @@ protocol DependencyStore {
 }
 
 extension DependencyStore where Self: Container {
-    func createCustomObject<Object: CustomInjectable>(storedWithKey key: String, parameters: Object.ParameterType, in table: NSMapTable<NSString, AnyObject>) -> Object {
+    func createCustomObject<Object: CustomInjectableObject>(storedWithKey key: String, parameters: Object.ParameterType, in table: NSMapTable<NSString, AnyObject>) -> Object {
         let object: Object = Object(container: self, parameter: parameters)
         table.setObject(object, forKey: key as NSString)
         object.didInject(container: self)
         return object
     }
 
-    func createObject<Object: Injectable>(storedWithKey key: String, in table: NSMapTable<NSString, AnyObject>) -> Object {
+    func createObject<Object: InjectableObject>(storedWithKey key: String, in table: NSMapTable<NSString, AnyObject>) -> Object {
         let object = Object(container: self)
         table.setObject(object, forKey: key as NSString)
         object.didInject(container: self)
         return object
+    }
+
+    func createValue<Value: InjectableValue>() -> Value {
+        let value = Value(container: self)
+        value.didInject(container: self)
+        return value
+    }
+
+    func createCustomValue<Value: CustomInjectableValue>(parameters: Value.ParameterType) -> Value {
+        let value: Value = Value(container: self, parameter: parameters)
+        value.didInject(container: self)
+        return value
     }
 }

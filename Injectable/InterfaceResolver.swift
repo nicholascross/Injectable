@@ -18,15 +18,29 @@ class InterfaceResolver {
         self.container = container
     }
 
-    func register<Interface, Object: Injectable>(interface: Interface.Type, implementation: Object.Type) {
-        register(interface: interface) { container -> Object in return container.resolve() }
+    func register<Interface, Value: InjectableValue>(interface: Interface.Type, implementation: Value.Type) {
+        register(interface: interface) { container -> Value in return container.resolve() }
     }
 
-    func register<Interface, Object: Injectable>(interface: Interface.Type, _ resolver: @escaping (Container) -> Object) {
+    func register<Interface, Value: InjectableValue>(interface: Interface.Type, _ resolver: @escaping (Container) -> Value) {
         registeredResolvers[String(describing: interface)] = resolver
     }
 
-    func register<Interface, Type: CustomInjectable>(interface: Interface.Type, type: Type.Type, key: String, _ provider: @escaping (Container) -> Type.ParameterType) {
+    func register<Interface, Type: CustomInjectableValue>(interface: Interface.Type, type: Type.Type, key: String, _ provider: @escaping (Container) -> Type.ParameterType) {
+        registeredCustomResolvers[String(describing: interface)] = { container, customKey -> Type in
+            return container.resolve(key: customKey)
+        }
+    }
+
+    func register<Interface, Object: InjectableObject>(interface: Interface.Type, implementation: Object.Type) {
+        register(interface: interface) { container -> Object in return container.resolve() }
+    }
+
+    func register<Interface, Object: InjectableObject>(interface: Interface.Type, _ resolver: @escaping (Container) -> Object) {
+        registeredResolvers[String(describing: interface)] = resolver
+    }
+
+    func register<Interface, Type: CustomInjectableObject>(interface: Interface.Type, type: Type.Type, key: String, _ provider: @escaping (Container) -> Type.ParameterType) {
         registeredCustomResolvers[String(describing: interface)] = { container, customKey -> Type in
             return container.resolve(key: customKey)
         }

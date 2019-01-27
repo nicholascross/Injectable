@@ -10,7 +10,7 @@ import Foundation
 import XCTest
 @testable import Injectable
 
-private class WebFramework: Injectable {
+private class WebFramework: InjectableObject {
 
     required init(container: Container) {
 
@@ -23,7 +23,7 @@ private class JavaScriptWebFramework: WebFramework {
 
 }
 
-private class StaticWebsiteGenerator: Injectable {
+private class StaticWebsiteGenerator: InjectableObject {
     static let lifetime: Lifetime = .transient
 
     let framework: WebFramework
@@ -33,7 +33,7 @@ private class StaticWebsiteGenerator: Injectable {
     }
 }
 
-private class DynamicWebsiteGenerator: Injectable {
+private class DynamicWebsiteGenerator: InjectableObject {
     static let lifetime: Lifetime = .transient
 
     let framework: JavaScriptWebFramework

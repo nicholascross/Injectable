@@ -16,12 +16,27 @@ class CustomerDependencyResolver {
         self.container = container
     }
 
-    func register<Type: CustomInjectable>(type: Type.Type, key: String, _ provider: @escaping (Container) -> Type.ParameterType) {
+    func register<Type: CustomInjectableObject>(type: Type.Type, key: String, _ provider: @escaping (Container) -> Type.ParameterType) {
         let customKey = "\(String(describing: type))-\(key)"
         self.customParameters[customKey] = provider
     }
 
-    func resolve<Object: CustomInjectable>(key: String, lifetime: Lifetime) -> Object {
+    func register<Type: CustomInjectableValue>(type: Type.Type, key: String, _ provider: @escaping (Container) -> Type.ParameterType) {
+        let customKey = "\(String(describing: type))-\(key)"
+        self.customParameters[customKey] = provider
+    }
+
+    func resolve<Value: CustomInjectableValue>(key: String) -> Value {
+        let customKey = "\(String(describing: Value.self))-\(key)"
+
+        guard let parameters = customParameters[customKey]?(self.container) as? Value.ParameterType else {
+            return self.container.createValue()
+        }
+
+        return container.createCustomValue(parameters: parameters)
+    }
+
+    func resolve<Object: CustomInjectableObject>(key: String, lifetime: Lifetime) -> Object {
         let customKey = "\(String(describing: Object.self))-\(key)"
 
         switch lifetime {
@@ -31,7 +46,7 @@ class CustomerDependencyResolver {
         }
     }
 
-    private func resolveCustom<Object: CustomInjectable>(key: String, table: NSMapTable<NSString, AnyObject>) -> Object {
+    private func resolveCustom<Object: CustomInjectableObject>(key: String, table: NSMapTable<NSString, AnyObject>) -> Object {
         return container.lock.synchronized {
             if let object = table.object(forKey: key as NSString) as? Object {
                 return object
@@ -45,7 +60,7 @@ class CustomerDependencyResolver {
         }
     }
 
-    private func createCustom<Object: CustomInjectable>(key: String) -> Object {
+    private func createCustom<Object: CustomInjectableObject>(key: String) -> Object {
         guard let parameters = customParameters[key]?(self.container) as? Object.ParameterType else {
             return Object(container: self.container)
         }

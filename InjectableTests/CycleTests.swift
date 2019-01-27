@@ -10,7 +10,7 @@ import Foundation
 import XCTest
 @testable import Injectable
 
-private class TestCycle: Injectable {
+private class TestCycle: InjectableObject {
 
     static let lifetime: Lifetime = .transient
 
@@ -25,7 +25,7 @@ private class TestCycle: Injectable {
     }
 }
 
-private class TestCycle2: Injectable {
+private class TestCycle2: InjectableObject {
     var completeCycle: TestCycle!
 
     static let lifetime: Lifetime = .transient

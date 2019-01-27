@@ -10,21 +10,21 @@ import Foundation
 import XCTest
 @testable import Injectable
 
-protocol Planet {
+private protocol Planet {
 
 }
 
-class Earth: Planet, Injectable {
+private class Earth: Planet, InjectableObject {
     required init(container: Container) {
 
     }
 }
 
-class Venus: Earth {
+private class Venus: Earth {
 
 }
 
-class Mars: Planet, CustomInjectable {
+private class Mars: Planet, CustomInjectableObject {
     typealias ParameterType = Bool
 
     var inhabitted: Bool

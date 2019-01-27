@@ -9,7 +9,7 @@
 import XCTest
 @testable import Injectable
 
-private class Ecosystem: Injectable {
+private class Ecosystem: InjectableObject {
     let animals: [Animal]
     let plants: [Plant]
 
@@ -27,15 +27,15 @@ private class Animal {
     }
 }
 
-private class Dog: Animal, Injectable {
+private class Dog: Animal, InjectableObject {
 
 }
 
-private class Cat: Animal, Injectable {
+private class Cat: Animal, InjectableObject {
 
 }
 
-private class Moose: Animal, Injectable {
+private class Moose: Animal, InjectableObject {
 
     let antlers: Int
 
@@ -45,7 +45,7 @@ private class Moose: Animal, Injectable {
     }
 }
 
-private class Plant: Injectable {
+private class Plant: InjectableObject {
     let genome: Genome
 
     required init(container: Container) {
@@ -53,7 +53,7 @@ private class Plant: Injectable {
     }
 }
 
-private class Genome: Injectable {
+private class Genome: InjectableObject {
     let data: Data
 
     required init(container: Container) {

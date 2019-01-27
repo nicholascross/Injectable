@@ -9,15 +9,25 @@
 import Foundation
 
 public protocol Container {
-    //Resolve any concrete type conforming to Injectable
+    //Resolve any concrete type conforming to InjectableValue
     //Useful for creating objects with out any registration
-    func resolve<Object: Injectable>(lifetime: Lifetime) -> Object
+    func resolve<Value: InjectableValue>() -> Value
 
-    //Resolve any concrete type conforming to CustomInjectable
+    //Resolve any concrete type conforming to CustomInjectableValue
     //If a resolver has been registered then that will be used instead
     //to provide additional parameters for object initialisation
     //Useful for creating varients of the same type
-    func resolve<Object: CustomInjectable>(key: String, lifetime: Lifetime) -> Object
+    func resolve<Value: CustomInjectableValue>(key: String) -> Value
+
+    //Resolve any concrete reference type conforming to InjectableObject
+    //Useful for creating objects with out any registration
+    func resolve<Object: InjectableObject>(lifetime: Lifetime) -> Object
+
+    //Resolve any concrete reference type conforming to CustomInjectableObject
+    //If a resolver has been registered then that will be used instead
+    //to provide additional parameters for object initialisation
+    //Useful for creating varients of the same type
+    func resolve<Object: CustomInjectableObject>(key: String, lifetime: Lifetime) -> Object
 
     //Resolve any type so long as it has a registered interface resolver
     //Useful for creating objects that conform to an interface when
@@ -33,11 +43,11 @@ public protocol Container {
 }
 
 public extension Container {
-    public func resolve<Object: Injectable>() -> Object {
+    public func resolve<Object: InjectableObject>() -> Object {
         return resolve(lifetime: Object.lifetime)
     }
 
-    public func resolve<Object: CustomInjectable>(key: String) -> Object {
+    public func resolve<Object: CustomInjectableObject>(key: String) -> Object {
         return resolve(key: key, lifetime: Object.lifetime)
     }
 }

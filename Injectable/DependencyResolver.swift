@@ -15,7 +15,11 @@ class DependencyResolver {
         self.container = container
     }
 
-    func resolve<Object: Injectable>(lifetime: Lifetime) -> Object {
+    func resolve<Value: InjectableValue>() -> Value {
+        return container.createValue()
+    }
+
+    func resolve<Object: InjectableObject>(lifetime: Lifetime) -> Object {
         switch lifetime {
         case .ephemeral: return Object(container: container)
         case .transient: return resolve(table: container.transientObjects)
@@ -23,7 +27,7 @@ class DependencyResolver {
         }
     }
 
-    private func resolve<Object: Injectable>(table: NSMapTable<NSString, AnyObject>) -> Object {
+    private func resolve<Object: InjectableObject>(table: NSMapTable<NSString, AnyObject>) -> Object {
         return container.lock.synchronized {
             let key = String(describing: Object.self)
 

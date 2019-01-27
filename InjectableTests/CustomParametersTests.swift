@@ -12,7 +12,7 @@ import Foundation
 import XCTest
 @testable import Injectable
 
-private class Person: CustomInjectable {
+private class Person: CustomInjectableObject {
     typealias ParameterType = Int
     let hobby: Programming
 
@@ -25,7 +25,7 @@ private class Person: CustomInjectable {
     }
 }
 
-private class Programming: CustomInjectable {
+private class Programming: CustomInjectableObject {
     typealias ParameterType = String
     let language: String
 
@@ -38,7 +38,7 @@ private class Programming: CustomInjectable {
     }
 }
 
-private class MockCustomObject: CustomInjectable {
+private class MockCustomObject: CustomInjectableObject {
     typealias ParameterType = String
 
     let parameter: String

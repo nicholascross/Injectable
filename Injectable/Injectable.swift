@@ -8,7 +8,18 @@
 
 import Foundation
 
-public protocol Injectable: AnyObject {
+public protocol InjectableValue {
+    init(container: Container)
+
+    func didInject(container: Container)
+}
+
+public protocol CustomInjectableValue: InjectableValue {
+    associatedtype ParameterType
+    init(container: Container, parameter: ParameterType)
+}
+
+public protocol InjectableObject: AnyObject {
     static var lifetime: Lifetime { get }
 
     init(container: Container)
@@ -16,16 +27,22 @@ public protocol Injectable: AnyObject {
     func didInject(container: Container)
 }
 
-public protocol CustomInjectable: Injectable {
+public protocol CustomInjectableObject: InjectableObject {
     associatedtype ParameterType
     init(container: Container, parameter: ParameterType)
 }
 
-public extension Injectable {
+public extension InjectableObject {
     static var lifetime: Lifetime {
         return .ephemeral
     }
 
+    func didInject(container: Container) {
+
+    }
+}
+
+public extension InjectableValue {
     func didInject(container: Container) {
 
     }

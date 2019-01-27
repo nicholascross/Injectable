@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		0195EAAF21F5E9A40008A143 /* InterfaceResolutionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0195EAAE21F5E9A40008A143 /* InterfaceResolutionTests.swift */; };
 		E126925321FC4459002FBC01 /* InterfaceResolver.swift in Sources */ = {isa = PBXBuildFile; fileRef = E126925221FC4459002FBC01 /* InterfaceResolver.swift */; };
+		E131C0B321FD3D8900B0A2E7 /* ValueTypeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E131C0B221FD3D8900B0A2E7 /* ValueTypeTests.swift */; };
 		E13831A221F2C3A40081F481 /* Injectable.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E138319821F2C3A40081F481 /* Injectable.framework */; };
 		E13831A721F2C3A40081F481 /* InjectableTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E13831A621F2C3A40081F481 /* InjectableTests.swift */; };
 		E13831A921F2C3A40081F481 /* Injectable.h in Headers */ = {isa = PBXBuildFile; fileRef = E138319B21F2C3A40081F481 /* Injectable.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -40,6 +41,7 @@
 /* Begin PBXFileReference section */
 		0195EAAE21F5E9A40008A143 /* InterfaceResolutionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterfaceResolutionTests.swift; sourceTree = "<group>"; };
 		E126925221FC4459002FBC01 /* InterfaceResolver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterfaceResolver.swift; sourceTree = "<group>"; };
+		E131C0B221FD3D8900B0A2E7 /* ValueTypeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValueTypeTests.swift; sourceTree = "<group>"; };
 		E138319821F2C3A40081F481 /* Injectable.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Injectable.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E138319B21F2C3A40081F481 /* Injectable.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Injectable.h; sourceTree = "<group>"; };
 		E138319C21F2C3A40081F481 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -127,6 +129,7 @@
 				E13831C021F2F2070081F481 /* PersistentLifetimeTests.swift */,
 				E13831CA21F33F090081F481 /* CustomParametersTests.swift */,
 				0195EAAE21F5E9A40008A143 /* InterfaceResolutionTests.swift */,
+				E131C0B221FD3D8900B0A2E7 /* ValueTypeTests.swift */,
 			);
 			path = InjectableTests;
 			sourceTree = "<group>";
@@ -257,6 +260,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E13831BB21F2E5AF0081F481 /* CycleTests.swift in Sources */,
+				E131C0B321FD3D8900B0A2E7 /* ValueTypeTests.swift in Sources */,
 				E13831BF21F2F1EE0081F481 /* TransientLifetimeTests.swift in Sources */,
 				E13831CB21F33F090081F481 /* CustomParametersTests.swift in Sources */,
 				E13831BD21F2F1910081F481 /* EphemeralLifetimeTests.swift in Sources */,
