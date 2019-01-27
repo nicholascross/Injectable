@@ -84,6 +84,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		E131C0B621FD8FE500B0A2E7 /* Internal */ = {
+			isa = PBXGroup;
+			children = (
+				E13831C821F33B190081F481 /* CustomDependencyResolver.swift */,
+				E13831C621F33AD20081F481 /* DependencyResolver.swift */,
+				E13831C421F339D00081F481 /* DependencyStore.swift */,
+				E126925221FC4459002FBC01 /* InterfaceResolver.swift */,
+				E13831C221F3337A0081F481 /* RecursiveLock.swift */,
+			);
+			path = Internal;
+			sourceTree = "<group>";
+		};
 		E138318E21F2C3A40081F481 = {
 			isa = PBXGroup;
 			children = (
@@ -106,17 +118,13 @@
 			isa = PBXGroup;
 			children = (
 				E13831B421F2E2230081F481 /* Container.swift */,
-				E13831C821F33B190081F481 /* CustomDependencyResolver.swift */,
 				E131C0B421FD8DE000B0A2E7 /* CustomInjectable.swift */,
 				E13831B821F2E2960081F481 /* DependencyContainer.swift */,
-				E13831C621F33AD20081F481 /* DependencyResolver.swift */,
-				E13831C421F339D00081F481 /* DependencyStore.swift */,
 				E138319C21F2C3A40081F481 /* Info.plist */,
 				E138319B21F2C3A40081F481 /* Injectable.h */,
 				E13831B221F2C3BA0081F481 /* Injectable.swift */,
-				E126925221FC4459002FBC01 /* InterfaceResolver.swift */,
+				E131C0B621FD8FE500B0A2E7 /* Internal */,
 				E13831B621F2E27C0081F481 /* Lifetime.swift */,
-				E13831C221F3337A0081F481 /* RecursiveLock.swift */,
 			);
 			path = Injectable;
 			sourceTree = "<group>";
