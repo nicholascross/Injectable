@@ -118,4 +118,3 @@ class ValueTypeTests: XCTestCase {
         XCTAssertFalse(mars.inhabitted)
     }
 }
-
