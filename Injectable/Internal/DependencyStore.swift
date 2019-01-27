@@ -8,36 +8,34 @@
 
 import Foundation
 
-protocol DependencyStore {
-    var transientObjects: NSMapTable<NSString, AnyObject> { get }
-    var persistentObjects: NSMapTable<NSString, AnyObject> { get }
-    var lock: RecursiveLock { get }
-}
+class DependencyStore {
+    let transientObjects: NSMapTable<NSString, AnyObject> = .strongToWeakObjects()
+    let persistentObjects: NSMapTable<NSString, AnyObject> = .strongToStrongObjects()
+    let lock: RecursiveLock = .init()
 
-extension DependencyStore where Self: Container {
-    func createCustomObject<Object: CustomInjectableObject>(storedWithKey key: String, parameters: Object.ParameterType, in table: NSMapTable<NSString, AnyObject>) -> Object {
-        let object: Object = Object(container: self, parameter: parameters)
+    func createCustomObject<Object: CustomInjectableObject>(usingContainer container: Container, storedWithKey key: String, parameters: Object.ParameterType, in table: NSMapTable<NSString, AnyObject>) -> Object {
+        let object: Object = Object(container: container, parameter: parameters)
         table.setObject(object, forKey: key as NSString)
-        object.didInject(container: self)
+        object.didInject(container: container)
         return object
     }
 
-    func createObject<Object: InjectableObject>(storedWithKey key: String, in table: NSMapTable<NSString, AnyObject>) -> Object {
-        let object = Object(container: self)
+    func createObject<Object: InjectableObject>(usingContainer container: Container, storedWithKey key: String, in table: NSMapTable<NSString, AnyObject>) -> Object {
+        let object = Object(container: container)
         table.setObject(object, forKey: key as NSString)
-        object.didInject(container: self)
+        object.didInject(container: container)
         return object
     }
 
-    func createValue<Value: InjectableValue>() -> Value {
-        let value = Value(container: self)
-        value.didInject(container: self)
+    func createValue<Value: InjectableValue>(usingContainer container: Container) -> Value {
+        let value = Value(container: container)
+        value.didInject(container: container)
         return value
     }
 
-    func createCustomValue<Value: CustomInjectableValue>(parameters: Value.ParameterType) -> Value {
-        let value: Value = Value(container: self, parameter: parameters)
-        value.didInject(container: self)
+    func createCustomValue<Value: CustomInjectableValue>(usingContainer container: Container, parameters: Value.ParameterType) -> Value {
+        let value: Value = Value(container: container, parameter: parameters)
+        value.didInject(container: container)
         return value
     }
 }

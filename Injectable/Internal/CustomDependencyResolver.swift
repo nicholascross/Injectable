@@ -9,11 +9,13 @@
 import Foundation
 
 class CustomerDependencyResolver {
-    private let container: Container & DependencyStore
+    private let container: Container
+    private let store: DependencyStore
     private var customParameters: [String: (Container) -> Any] = [:]
 
-    init(container: Container & DependencyStore) {
+    init(container: Container, store: DependencyStore) {
         self.container = container
+        self.store = store
     }
 
     func register<Type: CustomInjectableObject>(type: Type.Type, key: String, _ provider: @escaping (Container) -> Type.ParameterType) {
@@ -30,10 +32,10 @@ class CustomerDependencyResolver {
         let customKey = "\(String(describing: Value.self))-\(key)"
 
         guard let parameters = customParameters[customKey]?(self.container) as? Value.ParameterType else {
-            return self.container.createValue()
+            return store.createValue(usingContainer: container)
         }
 
-        return container.createCustomValue(parameters: parameters)
+        return store.createCustomValue(usingContainer: container, parameters: parameters)
     }
 
     func resolve<Object: CustomInjectableObject>(key: String, lifetime: Lifetime) -> Object {
@@ -41,22 +43,22 @@ class CustomerDependencyResolver {
 
         switch lifetime {
         case .ephemeral: return createCustom(key: customKey)
-        case .transient: return resolveCustom(key: customKey, table: container.transientObjects)
-        case .persistent: return resolveCustom(key: customKey, table: container.persistentObjects)
+        case .transient: return resolveCustom(key: customKey, table: store.transientObjects)
+        case .persistent: return resolveCustom(key: customKey, table: store.persistentObjects)
         }
     }
 
     private func resolveCustom<Object: CustomInjectableObject>(key: String, table: NSMapTable<NSString, AnyObject>) -> Object {
-        return container.lock.synchronized {
+        return store.lock.synchronized {
             if let object = table.object(forKey: key as NSString) as? Object {
                 return object
             }
 
             guard let parameters = customParameters[key]?(self.container) as? Object.ParameterType else {
-                return self.container.createObject(storedWithKey: key, in: table)
+                return store.createObject(usingContainer: container, storedWithKey: key, in: table)
             }
 
-            return self.container.createCustomObject(storedWithKey: key, parameters: parameters, in: table)
+            return store.createCustomObject(usingContainer: container, storedWithKey: key, parameters: parameters, in: table)
         }
     }
 

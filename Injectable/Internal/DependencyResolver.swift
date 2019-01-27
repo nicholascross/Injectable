@@ -9,33 +9,35 @@
 import Foundation
 
 class DependencyResolver {
-    private let container: Container & DependencyStore
+    private let container: Container
+    private let store: DependencyStore
 
-    init(container: Container & DependencyStore) {
+    init(container: Container, store: DependencyStore) {
         self.container = container
+        self.store = store
     }
 
     func resolve<Value: InjectableValue>() -> Value {
-        return container.createValue()
+        return store.createValue(usingContainer: container)
     }
 
     func resolve<Object: InjectableObject>(lifetime: Lifetime) -> Object {
         switch lifetime {
         case .ephemeral: return Object(container: container)
-        case .transient: return resolve(table: container.transientObjects)
-        case .persistent: return resolve(table: container.persistentObjects)
+        case .transient: return resolve(table: store.transientObjects)
+        case .persistent: return resolve(table: store.persistentObjects)
         }
     }
 
     private func resolve<Object: InjectableObject>(table: NSMapTable<NSString, AnyObject>) -> Object {
-        return container.lock.synchronized {
+        return store.lock.synchronized {
             let key = String(describing: Object.self)
 
             if let object = table.object(forKey: key as NSString) as? Object {
                 return object
             }
 
-            return container.createObject(storedWithKey: key, in: table)
+            return store.createObject(usingContainer: container, storedWithKey: key, in: table)
         }
     }
 

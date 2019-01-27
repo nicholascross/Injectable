@@ -8,22 +8,21 @@
 
 import Foundation
 
-public class DependencyContainer: Container, DependencyStore {
+public class DependencyContainer: Container {
     public static let shared: DependencyContainer = .init()
-
-    let transientObjects: NSMapTable<NSString, AnyObject> = .strongToWeakObjects()
-    let persistentObjects: NSMapTable<NSString, AnyObject> = .strongToStrongObjects()
-    let lock: RecursiveLock = .init()
 
     private var basicResolver: DependencyResolver!
     private var interfaceResolver: InterfaceResolver!
     private var customResolver: CustomerDependencyResolver!
 
     public init() {
-        basicResolver = .init(container: self)
-        customResolver = .init(container: self)
+        let dependencyStore = DependencyStore()
+        basicResolver = .init(container: self, store: dependencyStore)
+        customResolver = .init(container: self, store: dependencyStore)
         interfaceResolver = .init(container: self)
     }
+
+    // MARK: Interface registration
 
     public func register<Interface, Object: InjectableValue>(interface: Interface.Type, implementation: Object.Type) {
         interfaceResolver.register(interface: interface, implementation: implementation)
@@ -51,6 +50,8 @@ public class DependencyContainer: Container, DependencyStore {
         interfaceResolver.register(interface: interface, type: type, key: key, provider)
     }
 
+    // MARK: Custom parameter registration
+
     public func register<Type: CustomInjectableValue>(type: Type.Type, key: String, _ provider: @escaping (Container) -> Type.ParameterType) {
         customResolver.register(type: type, key: key, provider)
     }
@@ -59,17 +60,27 @@ public class DependencyContainer: Container, DependencyStore {
         customResolver.register(type: type, key: key, provider)
     }
 
+    // MARK: Basic resolvers
+
     public func resolve<Value: InjectableValue>() -> Value {
         return basicResolver.resolve()
-    }
-
-    public func resolve<Value: CustomInjectableValue>(key: String) -> Value {
-        return customResolver.resolve(key: key)
     }
 
     public func resolve<Object: InjectableObject>(lifetime: Lifetime) -> Object {
         return basicResolver.resolve(lifetime: lifetime)
     }
+
+    // MARK: Custom parameter resolvers
+
+    public func resolve<Value: CustomInjectableValue>(key: String) -> Value {
+        return customResolver.resolve(key: key)
+    }
+
+    public func resolve<Object: CustomInjectableObject>(key: String, lifetime: Lifetime) -> Object {
+        return customResolver.resolve(key: key, lifetime: lifetime)
+    }
+
+    // MARK: Interface resolvers
 
     public func resolveInterface<Interface>() -> Interface! {
         return interfaceResolver.resolveInterface()
@@ -77,10 +88,6 @@ public class DependencyContainer: Container, DependencyStore {
 
     public func resolveInterface<Interface>(key: String) -> Interface! {
         return interfaceResolver.resolveInterface(key: key)
-    }
-
-    public func resolve<Object: CustomInjectableObject>(key: String, lifetime: Lifetime) -> Object {
-        return customResolver.resolve(key: key, lifetime: lifetime)
     }
 
 }
