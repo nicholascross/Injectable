@@ -8,12 +8,6 @@
 
 import Foundation
 
-public protocol InjectableValue {
-    init(container: Container)
-
-    func didInject(container: Container)
-}
-
 public protocol InjectableObject: AnyObject {
     static var lifetime: Lifetime { get }
 
@@ -27,12 +21,6 @@ public extension InjectableObject {
         return .ephemeral
     }
 
-    func didInject(container: Container) {
-
-    }
-}
-
-public extension InjectableValue {
     func didInject(container: Container) {
 
     }

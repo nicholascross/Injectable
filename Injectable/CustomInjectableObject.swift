@@ -8,11 +8,6 @@
 
 import Foundation
 
-public protocol CustomInjectableValue: InjectableValue {
-    associatedtype ParameterType
-    init(container: Container, parameter: ParameterType)
-}
-
 public protocol CustomInjectableObject: InjectableObject {
     associatedtype ParameterType
     init(container: Container, parameter: ParameterType)
