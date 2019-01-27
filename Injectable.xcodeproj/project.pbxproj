@@ -105,18 +105,18 @@
 		E138319A21F2C3A40081F481 /* Injectable */ = {
 			isa = PBXGroup;
 			children = (
-				E138319B21F2C3A40081F481 /* Injectable.h */,
-				E138319C21F2C3A40081F481 /* Info.plist */,
-				E13831B221F2C3BA0081F481 /* Injectable.swift */,
 				E13831B421F2E2230081F481 /* Container.swift */,
-				E13831B621F2E27C0081F481 /* Lifetime.swift */,
-				E13831B821F2E2960081F481 /* DependencyContainer.swift */,
-				E13831C221F3337A0081F481 /* RecursiveLock.swift */,
-				E13831C421F339D00081F481 /* DependencyStore.swift */,
-				E13831C621F33AD20081F481 /* DependencyResolver.swift */,
 				E13831C821F33B190081F481 /* CustomDependencyResolver.swift */,
-				E126925221FC4459002FBC01 /* InterfaceResolver.swift */,
 				E131C0B421FD8DE000B0A2E7 /* CustomInjectable.swift */,
+				E13831B821F2E2960081F481 /* DependencyContainer.swift */,
+				E13831C621F33AD20081F481 /* DependencyResolver.swift */,
+				E13831C421F339D00081F481 /* DependencyStore.swift */,
+				E138319C21F2C3A40081F481 /* Info.plist */,
+				E138319B21F2C3A40081F481 /* Injectable.h */,
+				E13831B221F2C3BA0081F481 /* Injectable.swift */,
+				E126925221FC4459002FBC01 /* InterfaceResolver.swift */,
+				E13831B621F2E27C0081F481 /* Lifetime.swift */,
+				E13831C221F3337A0081F481 /* RecursiveLock.swift */,
 			);
 			path = Injectable;
 			sourceTree = "<group>";
@@ -124,14 +124,14 @@
 		E13831A521F2C3A40081F481 /* InjectableTests */ = {
 			isa = PBXGroup;
 			children = (
-				E13831A621F2C3A40081F481 /* InjectableTests.swift */,
-				E13831A821F2C3A40081F481 /* Info.plist */,
+				E13831CA21F33F090081F481 /* CustomParametersTests.swift */,
 				E13831BA21F2E5AF0081F481 /* CycleTests.swift */,
 				E13831BC21F2F1910081F481 /* EphemeralLifetimeTests.swift */,
-				E13831BE21F2F1EE0081F481 /* TransientLifetimeTests.swift */,
-				E13831C021F2F2070081F481 /* PersistentLifetimeTests.swift */,
-				E13831CA21F33F090081F481 /* CustomParametersTests.swift */,
+				E13831A821F2C3A40081F481 /* Info.plist */,
+				E13831A621F2C3A40081F481 /* InjectableTests.swift */,
 				0195EAAE21F5E9A40008A143 /* InterfaceResolutionTests.swift */,
+				E13831C021F2F2070081F481 /* PersistentLifetimeTests.swift */,
+				E13831BE21F2F1EE0081F481 /* TransientLifetimeTests.swift */,
 				E131C0B221FD3D8900B0A2E7 /* ValueTypeTests.swift */,
 			);
 			path = InjectableTests;
@@ -246,15 +246,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E13831B321F2C3BA0081F481 /* Injectable.swift in Sources */,
-				E131C0B521FD8DE000B0A2E7 /* CustomInjectable.swift in Sources */,
-				E13831B721F2E27C0081F481 /* Lifetime.swift in Sources */,
-				E13831B921F2E2960081F481 /* DependencyContainer.swift in Sources */,
 				E13831B521F2E2230081F481 /* Container.swift in Sources */,
-				E13831C521F339D00081F481 /* DependencyStore.swift in Sources */,
-				E126925321FC4459002FBC01 /* InterfaceResolver.swift in Sources */,
 				E13831C921F33B190081F481 /* CustomDependencyResolver.swift in Sources */,
+				E131C0B521FD8DE000B0A2E7 /* CustomInjectable.swift in Sources */,
+				E13831B921F2E2960081F481 /* DependencyContainer.swift in Sources */,
 				E13831C721F33AD20081F481 /* DependencyResolver.swift in Sources */,
+				E13831C521F339D00081F481 /* DependencyStore.swift in Sources */,
+				E13831B321F2C3BA0081F481 /* Injectable.swift in Sources */,
+				E126925321FC4459002FBC01 /* InterfaceResolver.swift in Sources */,
+				E13831B721F2E27C0081F481 /* Lifetime.swift in Sources */,
 				E13831C321F3337A0081F481 /* RecursiveLock.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -263,14 +263,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E13831BB21F2E5AF0081F481 /* CycleTests.swift in Sources */,
-				E131C0B321FD3D8900B0A2E7 /* ValueTypeTests.swift in Sources */,
-				E13831BF21F2F1EE0081F481 /* TransientLifetimeTests.swift in Sources */,
 				E13831CB21F33F090081F481 /* CustomParametersTests.swift in Sources */,
+				E13831BB21F2E5AF0081F481 /* CycleTests.swift in Sources */,
 				E13831BD21F2F1910081F481 /* EphemeralLifetimeTests.swift in Sources */,
 				E13831A721F2C3A40081F481 /* InjectableTests.swift in Sources */,
 				0195EAAF21F5E9A40008A143 /* InterfaceResolutionTests.swift in Sources */,
 				E13831C121F2F2070081F481 /* PersistentLifetimeTests.swift in Sources */,
+				E13831BF21F2F1EE0081F481 /* TransientLifetimeTests.swift in Sources */,
+				E131C0B321FD3D8900B0A2E7 /* ValueTypeTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -421,11 +421,7 @@
 				FRAMEWORK_VERSION = A;
 				INFOPLIST_FILE = Injectable/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/../Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.nacross.Injectable;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -450,11 +446,7 @@
 				FRAMEWORK_VERSION = A;
 				INFOPLIST_FILE = Injectable/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/../Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.nacross.Injectable;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -471,11 +463,7 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = BRM53H4XE2;
 				INFOPLIST_FILE = InjectableTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/../Frameworks",
-					"@loader_path/../Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.nacross.InjectableTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -491,11 +479,7 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = BRM53H4XE2;
 				INFOPLIST_FILE = InjectableTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/../Frameworks",
-					"@loader_path/../Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.nacross.InjectableTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
