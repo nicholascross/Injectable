@@ -19,9 +19,10 @@ A Swift dependency injection container which minimises the need for centralised 
 - Interface resovable types require registration, this registration is not enforced at compile time, meaning it can fail at runtime if registration is ommitted
 - When resolving type varients if no custom parameters are registered then standard resolution will occur instead
 
-# Show stoppers (needs to be refactored)
+# Better documentation of workarounds needed
 
-- Unable to add injection support to classes you do not own due to being unable to add required initializers via extension. "'required' initializer must be declared directly in class 'DateFormatter' (not in an extension)"
+- It turns out that the issue faced by this library in extending unowned types is not unique and is discussed at length here: https://forums.swift.org/t/why-you-cant-make-someone-elses-class-decodable-a-long-winded-explanation-of-required-initializers/6437/12
+  The most practical work arounds are to wrap the type
 
 # Usage Examples
 
