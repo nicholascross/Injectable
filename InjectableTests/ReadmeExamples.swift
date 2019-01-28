@@ -156,4 +156,34 @@ class ReadmeExamplesTests: XCTestCase {
         let formatter: InjectableDataFormatter = container.resolve(key: "MMM YYYY")
         print("\(formatter.formatter.string(from: Date()))")
     }
+
+    func testCycles() {
+        class CycleStart: InjectableObject {
+
+            static let lifetime: Lifetime = .transient
+
+            var startCycle: CycleComplete!
+
+            required init(container: Container) {
+
+            }
+
+            func didInject(container: Container) {
+                startCycle = container.resolve()
+            }
+        }
+
+        class CycleComplete: InjectableObject {
+            var completeCycle: CycleStart
+
+            static let lifetime: Lifetime = .transient
+
+            required init(container: Container) {
+                completeCycle = container.resolve()
+            }
+        }
+
+        let objectWithCyclicDependency: CycleStart = container.resolve()
+        print("\(objectWithCyclicDependency.startCycle.completeCycle === objectWithCyclicDependency)") //print: true
+    }
 }

@@ -18,7 +18,7 @@ A Swift dependency injection container which minimises the need for centralised 
 - Coupling is created between dependency injection framework and injected types through protocol conformance
 - Interface resovable types require registration, this registration is not enforced at compile time, meaning it can fail at runtime if registration is ommitted
 - When resolving type varients if no custom parameters are registered then standard resolution will occur instead
-- Due to [restirctions on implementing required initializers in extenstions](https://forums.swift.org/t/why-you-cant-make-someone-elses-class-decodable-a-long-winded-explanation-of-required-initializers/6437/5) wrapper types might be needed for types you do not own and can only modify via extension
+- Due to [restirctions on implementing required initializers in extenstions](https://forums.swift.org/t/why-you-cant-make-someone-elses-class-decodable-a-long-winded-explanation-of-required-initializers/6437) wrapper types might be needed for types you do not own and can only modify via extension
 
 # Usage Examples
 
@@ -154,13 +154,41 @@ print("\(swift === devY.favourateLanguage)") //true: when a new DeveloperY is cr
 
 ## Cyclic dependencies
 
-**TODO**
+```swift
+class CycleStart: InjectableObject {
+
+    static let lifetime: Lifetime = .transient
+
+    var startCycle: CycleComplete!
+
+    required init(container: Container) {
+
+    }
+
+    func didInject(container: Container) {
+        startCycle = container.resolve()
+    }
+}
+
+class CycleComplete: InjectableObject {
+    var completeCycle: CycleStart
+
+    static let lifetime: Lifetime = .transient
+
+    required init(container: Container) {
+        completeCycle = container.resolve()
+    }
+}
+
+let objectWithCyclicDependency: CycleStart = container.resolve()
+print("\(objectWithCyclicDependency.startCycle.completeCycle === objectWithCyclicDependency)") //print: true
+```
 
 ## Resolving types you do not own
 
 Due to restrictions on implementing required initializers in extensions the only way to inject types you do not own is by creating some kind of wrapper type.
 
-The same problems are faced when trying to apply Decodable to type you do not own.  See [this discussion](https://forums.swift.org/t/why-you-cant-make-someone-elses-class-decodable-a-long-winded-explanation-of-required-initializers/6437/12) for more details.
+The same problems are faced when trying to apply Decodable to a type you do not own.  See [this discussion](https://forums.swift.org/t/why-you-cant-make-someone-elses-class-decodable-a-long-winded-explanation-of-required-initializers/6437) for more details.
 
 ```swift
 class InjectableDataFormatter: CustomInjectableObject {
