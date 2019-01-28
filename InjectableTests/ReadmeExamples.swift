@@ -14,6 +14,10 @@ private protocol Language: InjectableObject {
 
 }
 
+private protocol Planet {
+
+}
+
 class InjectableDataFormatter: CustomInjectableObject {
     typealias ParameterType = String
 
@@ -185,5 +189,29 @@ class ReadmeExamplesTests: XCTestCase {
 
         let objectWithCyclicDependency: CycleStart = container.resolve()
         print("\(objectWithCyclicDependency.startCycle.completeCycle === objectWithCyclicDependency)") //print: true
+    }
+
+    func testInterfaceResolution() {
+        /*protocol Planet {
+
+        }*/
+
+        class Earth: Planet, InjectableObject {
+            required init(container: Container) {
+
+            }
+        }
+
+        class Venus: Earth {
+
+        }
+
+        container.register(interface: Planet.self, implementation: Earth.self)
+        let planet1: Planet = container.resolveInterface()
+        print("\(planet1 is Earth)") //print: true
+
+        container.register(interface: Earth.self) { container in container.resolve() as Venus }
+        let planet2: Earth = container.resolveInterface()
+        print("\(planet2 is Venus)") //print: true
     }
 }

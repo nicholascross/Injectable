@@ -150,7 +150,27 @@ print("\(swift === devY.favourateLanguage)") //true: when a new DeveloperY is cr
 
 ## Interface registration
 
-**TODO**
+```swift
+protocol Planet {
+
+}
+
+class Earth: Planet, InjectableObject {
+    required init(container: Container) { }
+}
+
+class Venus: Earth {
+
+}
+
+container.register(interface: Planet.self, implementation: Earth.self)
+let planet1: Planet = container.resolveInterface()
+print("\(planet1 is Earth)") //print: true
+
+container.register(interface: Earth.self) { container in container.resolve() as Venus }
+let planet2: Earth = container.resolveInterface()
+print("\(planet2 is Venus)") //print: true
+```
 
 ## Cyclic dependencies
 
