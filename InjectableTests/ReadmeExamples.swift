@@ -214,4 +214,43 @@ class ReadmeExamplesTests: XCTestCase {
         let planet2: Earth = container.resolveInterface()
         print("\(planet2 is Venus)") //print: true
     }
+
+    func testCustomParameters() {
+        class Person: CustomInjectableObject {
+            typealias ParameterType = Int
+            let hobby: Programming
+
+            required init(container: Container, parameter: ParameterType) {
+                hobby = parameter > 29 ? container.resolve(key: "OldSchool") : container.resolve(key: "NewAge")
+            }
+
+            required init(container: Container) {
+                hobby = .init(container: container)
+            }
+        }
+
+        class Programming: CustomInjectableObject {
+            typealias ParameterType = String
+            let language: String
+
+            required init(container: Container, parameter: ParameterType) {
+                language = parameter
+            }
+
+            required init(container: Container) {
+                language = "Java"
+            }
+        }
+
+        container.register(type: Programming.self, key: "OldSchool") { _ in "ObjC" }
+        container.register(type: Programming.self, key: "NewAge") { _ in "Swift" }
+        container.register(type: Person.self, key: "Nick", { _ in 34 })
+        container.register(type: Person.self, key: "Jim", { _ in 25 })
+
+        let nick: Person = container.resolve(key: "Nick")
+        let jim: Person = container.resolve(key: "Jim")
+
+        print("\(nick.hobby.language == "ObjC")") //print: true
+        print("\(jim.hobby.language == "Swift")") //print: true
+    }
 }
