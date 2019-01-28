@@ -91,3 +91,13 @@ public class DependencyContainer: Container {
     }
 
 }
+
+extension DependencyContainer {
+    public func register<Type: CustomInjectableValue>(type: Type.Type, key: String) where Type.ParameterType == String {
+       register(type: type.self, key: key) { container in return key }
+    }
+
+    public func register<Type: CustomInjectableObject>(type: Type.Type, key: String) where Type.ParameterType == String {
+        register(type: type.self, key: key) { container in return key }
+    }
+}
