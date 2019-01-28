@@ -253,4 +253,32 @@ class ReadmeExamplesTests: XCTestCase {
         print("\(nick.hobby.language == "ObjC")") //print: true
         print("\(jim.hobby.language == "Swift")") //print: true
     }
+
+    func testBasic() {
+        let container = DependencyContainer()
+
+        let catPerson: CatPerson = container.resolve()
+        let person: Person = container.resolve() as CatPerson
+    }
 }
+
+private protocol Animal: InjectableValue { }
+
+private protocol Person: InjectableValue { }
+
+private struct Cat: Animal {
+    init(container: Container) { }
+}
+
+private struct CatPerson: Person {
+    let pet: Animal
+
+    init(container: Container) {
+        self.init(pet: container.resolve() as Cat)
+    }
+
+    init(pet: Animal) {
+        self.pet = pet
+    }
+}
+

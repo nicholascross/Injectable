@@ -22,4 +22,32 @@ A Swift dependency injection container which minimises the need for centralised 
 
 # Usage examples
 
-See [usage examples here](UsageExamples.md)
+Simple example
+
+```swift
+protocol Animal: InjectableValue { }
+protocol Person: InjectableValue { }
+
+struct Cat: Animal {
+    init(container: Container) { }
+}
+
+struct CatPerson: Person {
+    let pet: Animal
+
+    init(container: Container) {
+        self.init(pet: container.resolve() as Cat)
+    }
+
+    init(pet: Animal) {
+        self.pet = pet
+    }
+}
+
+let container = DependencyContainer()
+
+let catPerson: CatPerson = container.resolve()
+let person: Person = container.resolve() as CatPerson
+```
+
+See more [usage examples here](UsageExamples.md)
