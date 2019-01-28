@@ -14,6 +14,22 @@ private protocol Language: InjectableObject {
 
 }
 
+class InjectableDataFormatter: CustomInjectableObject {
+    typealias ParameterType = String
+
+    let formatter: DateFormatter
+
+    required init(container: Container) {
+        formatter = DateFormatter()
+    }
+
+    required init(container: Container, parameter: String) {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = parameter
+        formatter = dateFormatter
+    }
+}
+
 class ReadmeExamplesTests: XCTestCase {
 
     var container: DependencyContainer!
@@ -133,4 +149,11 @@ class ReadmeExamplesTests: XCTestCase {
         print("\(swift === devY.favourateLanguage)") //true: when a new DeveloperY is created the same instance of SwiftLanguage is used
     }
 
+    func testFullDateFormatter() {
+        container.register(type: InjectableDataFormatter.self, key: "MMM YYYY")
+        container.register(type: InjectableDataFormatter.self, key: "dd/MM/YYYY")
+
+        let formatter: InjectableDataFormatter = container.resolve(key: "MMM YYYY")
+        print("\(formatter.formatter.string(from: Date()))")
+    }
 }

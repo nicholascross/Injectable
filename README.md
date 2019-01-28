@@ -5,10 +5,10 @@ A Swift dependency injection container which minimises the need for centralised 
 # Features
 
 - Support decentralised dependency resolution
-- Support multiple object lifetimes
+- Support varying object lifetimes
 - Support reference and value types
 - Support creation of type varients that are resolvable by key
-- Support interface based registration to allow for resolving of dependencies where the implementing class is not available
+- Support interface based registration to allow for resolving of dependencies where the implementing class is not available/desirable
 - Support for cyclic dependencies
 - Eliminates multiple parameters in initialisers with types numerous dependencies
 
@@ -18,11 +18,7 @@ A Swift dependency injection container which minimises the need for centralised 
 - Coupling is created between dependency injection framework and injected types through protocol conformance
 - Interface resovable types require registration, this registration is not enforced at compile time, meaning it can fail at runtime if registration is ommitted
 - When resolving type varients if no custom parameters are registered then standard resolution will occur instead
-
-# Better documentation of workarounds needed
-
-- It turns out that the issue faced by this library in extending unowned types is not unique and is discussed at length here: https://forums.swift.org/t/why-you-cant-make-someone-elses-class-decodable-a-long-winded-explanation-of-required-initializers/6437/12
-  The most practical work arounds are to wrap the type
+- Due to [restirctions on implementing required initializers in extenstions](https://forums.swift.org/t/why-you-cant-make-someone-elses-class-decodable-a-long-winded-explanation-of-required-initializers/6437/5) wrapper types might be needed for types you do not own and can only modify via extension
 
 # Usage Examples
 
@@ -148,3 +144,44 @@ devY = container.resolve()
 print("\(swift === devY.favourateLanguage)") //true: when a new DeveloperY is created the same instance of SwiftLanguage is used
 ```
 
+## Custom parameters
+
+**TODO**
+
+## Interface registration
+
+**TODO**
+
+## Cyclic dependencies
+
+**TODO**
+
+## Resolving types you do not own
+
+Due to restrictions on implementing required initializers in extensions the only way to inject types you do not own is by creating some kind of wrapper type.
+
+The same problems are faced when trying to apply Decodable to type you do not own.  See [this discussion](https://forums.swift.org/t/why-you-cant-make-someone-elses-class-decodable-a-long-winded-explanation-of-required-initializers/6437/12) for more details.
+
+```swift
+class InjectableDataFormatter: CustomInjectableObject {
+    typealias ParameterType = String
+
+    let formatter: DateFormatter
+
+    required init(container: Container) {
+        formatter = DateFormatter()
+    }
+
+    required init(container: Container, parameter: String) {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = parameter
+        formatter = dateFormatter
+    }
+}
+
+container.register(type: InjectableDataFormatter.self, key: "MMM YYYY")
+container.register(type: InjectableDataFormatter.self, key: "dd/MM/YYYY")
+
+let formatter: InjectableDataFormatter = container.resolve(key: "MMM YYYY")
+print("\(formatter.formatter.string(from: Date()))") //prints: Jan 2019
+```
