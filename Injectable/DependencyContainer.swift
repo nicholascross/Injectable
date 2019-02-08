@@ -57,12 +57,7 @@ public class DependencyContainer: Container {
         return lock.synchronized {
             let key = "\(String(describing: Object.self))-\(variant)"
 
-            guard let existingObject = table.object(forKey: key as NSString) else {
-                //trigger purge
-                return Object.createInjectable(inContainer: self, variant: variant)
-            }
-
-            guard let object = WeakBox.unbox(object: existingObject) as? Object else {
+            guard let object = WeakBox.unbox(object: table.object(forKey: key as NSString) ) as? Object else {
                 return Object.createInjectable(inContainer: self, variant: variant)
             }
 
@@ -79,7 +74,7 @@ private class WeakBox {
         self.item = item
     }
 
-    static func unbox(object: AnyObject) -> AnyObject? {
+    static func unbox(object: AnyObject?) -> AnyObject? {
         guard let box = object as? WeakBox else {
             return object
         }
