@@ -10,29 +10,23 @@ import Foundation
 import XCTest
 @testable import Injectable
 
-private class Person: InjectableObject {
+private class StaticSiteGenerator: Injectable, LifetimeProviding {
     static let lifetime: Lifetime = .transient
 
-    let favourateLanguage: Language
-
-    required init(container: Container) {
-        favourateLanguage = container.resolve()
+    static func create(inContainer container: Container) -> StaticSiteGenerator {
+        return StaticSiteGenerator()
     }
-}
 
-private class Language: InjectableObject {
-    static let lifetime: Lifetime = .persistent
+    static func didCreate(object: StaticSiteGenerator, inContainer container: Container) {
 
-    let name: String
-
-    required init(container: Container) {
-        name = "ObjC"
     }
 }
 
 class TransientLifetimeTests: XCTestCase {
 
-    var container: DependencyContainer!
+    private var container: DependencyContainer!
+    private var webFramework1: StaticSiteGenerator?
+    private weak var webFramework2: StaticSiteGenerator?
 
     override func setUp() {
         container = DependencyContainer()
@@ -42,43 +36,17 @@ class TransientLifetimeTests: XCTestCase {
         container = nil
     }
 
-    func testTransientLifetime() {
-        var person1: Person? = container.resolve()
-        var person2: Person? = container.resolve()
-
-        XCTAssert(person1 === person2)
-
-        person1 = container.resolve(lifetime: .ephemeral)
-        person2 = container.resolve(lifetime: .ephemeral)
-
-        XCTAssert(person1 !== person2)
-
-        person1 = container.resolve()
-
-        XCTAssert(person1 !== person2)
-
-        person2 = container.resolve()
-
-        XCTAssert(person1 === person2)
-    }
-
     func testTransientLifetimeWhenSpecified() {
-        var language1: Language? = container.resolve(lifetime: .transient)
-        var language2: Language? = container.resolve(lifetime: .transient)
+        webFramework1 = container.resolve()
+        webFramework2 = container.resolve()
 
-        XCTAssert(language1 === language2)
+        XCTAssert(webFramework1 === webFramework2)
+        XCTAssertNotNil(webFramework2)
 
-        language1 = container.resolve(lifetime: .ephemeral)
-        language2 = container.resolve(lifetime: .ephemeral)
+        webFramework1 = nil
 
-        XCTAssert(language1 !== language2)
+        webFramework1 = container.resolve()
 
-        language1 = container.resolve()
-
-        XCTAssert(language1 !== language2)
-
-        language2 = container.resolve()
-
-        XCTAssert(language1 === language2)
+        XCTAssert(webFramework1 !== webFramework2)
     }
 }

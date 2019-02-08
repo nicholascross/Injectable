@@ -10,28 +10,36 @@ import Foundation
 import XCTest
 @testable import Injectable
 
-private class TestCycle: InjectableObject {
+private class TestCycle: Injectable, LifetimeProviding {
 
     static let lifetime: Lifetime = .transient
 
     var startCycle: TestCycle2!
 
-    required init(container: Container) {
-
+    static func create(inContainer container: Container) -> TestCycle {
+        return TestCycle()
     }
 
-    func didInject(container: Container) {
-        startCycle = container.resolve()
+    static func didCreate(object: TestCycle, inContainer container: Container) {
+        object.startCycle = container.resolve()
     }
 }
 
-private class TestCycle2: InjectableObject {
+private class TestCycle2: Injectable, LifetimeProviding {
     var completeCycle: TestCycle!
 
     static let lifetime: Lifetime = .transient
 
-    required init(container: Container) {
-        completeCycle = container.resolve()
+    init(completeCycle: TestCycle) {
+        self.completeCycle = completeCycle
+    }
+
+    static func create(inContainer container: Container) -> TestCycle2 {
+        return TestCycle2(completeCycle: container.resolve())
+    }
+
+    static func didCreate(object: TestCycle2, inContainer container: Container) {
+
     }
 }
 

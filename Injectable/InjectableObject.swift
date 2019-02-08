@@ -8,20 +8,16 @@
 
 import Foundation
 
-public protocol InjectableObject: AnyObject {
-    static var lifetime: Lifetime { get }
+public protocol InjectableObject {
+    associatedtype InjectorType
 
-    init(container: Container)
-
-    func didInject(container: Container)
+    static var injector: InjectorType.Type { get }
 }
 
-public extension InjectableObject {
-    static var lifetime: Lifetime {
-        return .ephemeral
-    }
+public protocol Injector {
+    associatedtype InjectedType: InjectableObject
 
-    func didInject(container: Container) {
+    static func create(inContainer container: Container) -> InjectedType
 
-    }
+    static func didCreate(object: InjectedType, inContainer container: Container)
 }

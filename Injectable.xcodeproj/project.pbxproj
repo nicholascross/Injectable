@@ -8,28 +8,20 @@
 
 /* Begin PBXBuildFile section */
 		0195EAAF21F5E9A40008A143 /* InterfaceResolutionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0195EAAE21F5E9A40008A143 /* InterfaceResolutionTests.swift */; };
-		E126925321FC4459002FBC01 /* InterfaceResolver.swift in Sources */ = {isa = PBXBuildFile; fileRef = E126925221FC4459002FBC01 /* InterfaceResolver.swift */; };
-		E131C0B321FD3D8900B0A2E7 /* ValueTypeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E131C0B221FD3D8900B0A2E7 /* ValueTypeTests.swift */; };
-		E131C0B521FD8DE000B0A2E7 /* CustomInjectableObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = E131C0B421FD8DE000B0A2E7 /* CustomInjectableObject.swift */; };
-		E131C0B821FD90AA00B0A2E7 /* InjectableValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = E131C0B721FD90AA00B0A2E7 /* InjectableValue.swift */; };
-		E131C0BA21FD90D700B0A2E7 /* CustomInjectableValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = E131C0B921FD90D700B0A2E7 /* CustomInjectableValue.swift */; };
-		E131C0BC21FDB11000B0A2E7 /* ReadmeExamples.swift in Sources */ = {isa = PBXBuildFile; fileRef = E131C0BB21FDB10F00B0A2E7 /* ReadmeExamples.swift */; };
+		E131C0B821FD90AA00B0A2E7 /* Injectable.swift in Sources */ = {isa = PBXBuildFile; fileRef = E131C0B721FD90AA00B0A2E7 /* Injectable.swift */; };
 		E13831A221F2C3A40081F481 /* Injectable.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E138319821F2C3A40081F481 /* Injectable.framework */; };
 		E13831A721F2C3A40081F481 /* InjectableTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E13831A621F2C3A40081F481 /* InjectableTests.swift */; };
 		E13831A921F2C3A40081F481 /* Injectable.h in Headers */ = {isa = PBXBuildFile; fileRef = E138319B21F2C3A40081F481 /* Injectable.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E13831B321F2C3BA0081F481 /* InjectableObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = E13831B221F2C3BA0081F481 /* InjectableObject.swift */; };
 		E13831B521F2E2230081F481 /* Container.swift in Sources */ = {isa = PBXBuildFile; fileRef = E13831B421F2E2230081F481 /* Container.swift */; };
-		E13831B721F2E27C0081F481 /* Lifetime.swift in Sources */ = {isa = PBXBuildFile; fileRef = E13831B621F2E27C0081F481 /* Lifetime.swift */; };
+		E13831B721F2E27C0081F481 /* LifetimeProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = E13831B621F2E27C0081F481 /* LifetimeProviding.swift */; };
 		E13831B921F2E2960081F481 /* DependencyContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E13831B821F2E2960081F481 /* DependencyContainer.swift */; };
 		E13831BB21F2E5AF0081F481 /* CycleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E13831BA21F2E5AF0081F481 /* CycleTests.swift */; };
 		E13831BD21F2F1910081F481 /* EphemeralLifetimeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E13831BC21F2F1910081F481 /* EphemeralLifetimeTests.swift */; };
 		E13831BF21F2F1EE0081F481 /* TransientLifetimeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E13831BE21F2F1EE0081F481 /* TransientLifetimeTests.swift */; };
 		E13831C121F2F2070081F481 /* PersistentLifetimeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E13831C021F2F2070081F481 /* PersistentLifetimeTests.swift */; };
 		E13831C321F3337A0081F481 /* RecursiveLock.swift in Sources */ = {isa = PBXBuildFile; fileRef = E13831C221F3337A0081F481 /* RecursiveLock.swift */; };
-		E13831C521F339D00081F481 /* DependencyStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = E13831C421F339D00081F481 /* DependencyStore.swift */; };
-		E13831C721F33AD20081F481 /* DependencyResolver.swift in Sources */ = {isa = PBXBuildFile; fileRef = E13831C621F33AD20081F481 /* DependencyResolver.swift */; };
-		E13831C921F33B190081F481 /* CustomDependencyResolver.swift in Sources */ = {isa = PBXBuildFile; fileRef = E13831C821F33B190081F481 /* CustomDependencyResolver.swift */; };
-		E13831CB21F33F090081F481 /* CustomParametersTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E13831CA21F33F090081F481 /* CustomParametersTests.swift */; };
+		E1BBF110220AE655000A0D22 /* VariantCreating.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1BBF10F220AE655000A0D22 /* VariantCreating.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,12 +36,7 @@
 
 /* Begin PBXFileReference section */
 		0195EAAE21F5E9A40008A143 /* InterfaceResolutionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterfaceResolutionTests.swift; sourceTree = "<group>"; };
-		E126925221FC4459002FBC01 /* InterfaceResolver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterfaceResolver.swift; sourceTree = "<group>"; };
-		E131C0B221FD3D8900B0A2E7 /* ValueTypeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValueTypeTests.swift; sourceTree = "<group>"; };
-		E131C0B421FD8DE000B0A2E7 /* CustomInjectableObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomInjectableObject.swift; sourceTree = "<group>"; };
-		E131C0B721FD90AA00B0A2E7 /* InjectableValue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InjectableValue.swift; sourceTree = "<group>"; };
-		E131C0B921FD90D700B0A2E7 /* CustomInjectableValue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomInjectableValue.swift; sourceTree = "<group>"; };
-		E131C0BB21FDB10F00B0A2E7 /* ReadmeExamples.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadmeExamples.swift; sourceTree = "<group>"; };
+		E131C0B721FD90AA00B0A2E7 /* Injectable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Injectable.swift; sourceTree = "<group>"; };
 		E138319821F2C3A40081F481 /* Injectable.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Injectable.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E138319B21F2C3A40081F481 /* Injectable.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Injectable.h; sourceTree = "<group>"; };
 		E138319C21F2C3A40081F481 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -58,17 +45,14 @@
 		E13831A821F2C3A40081F481 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E13831B221F2C3BA0081F481 /* InjectableObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InjectableObject.swift; sourceTree = "<group>"; };
 		E13831B421F2E2230081F481 /* Container.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Container.swift; sourceTree = "<group>"; };
-		E13831B621F2E27C0081F481 /* Lifetime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Lifetime.swift; sourceTree = "<group>"; };
+		E13831B621F2E27C0081F481 /* LifetimeProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LifetimeProviding.swift; sourceTree = "<group>"; };
 		E13831B821F2E2960081F481 /* DependencyContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DependencyContainer.swift; sourceTree = "<group>"; };
 		E13831BA21F2E5AF0081F481 /* CycleTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CycleTests.swift; sourceTree = "<group>"; };
 		E13831BC21F2F1910081F481 /* EphemeralLifetimeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EphemeralLifetimeTests.swift; sourceTree = "<group>"; };
 		E13831BE21F2F1EE0081F481 /* TransientLifetimeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransientLifetimeTests.swift; sourceTree = "<group>"; };
 		E13831C021F2F2070081F481 /* PersistentLifetimeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistentLifetimeTests.swift; sourceTree = "<group>"; };
 		E13831C221F3337A0081F481 /* RecursiveLock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecursiveLock.swift; sourceTree = "<group>"; };
-		E13831C421F339D00081F481 /* DependencyStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DependencyStore.swift; sourceTree = "<group>"; };
-		E13831C621F33AD20081F481 /* DependencyResolver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DependencyResolver.swift; sourceTree = "<group>"; };
-		E13831C821F33B190081F481 /* CustomDependencyResolver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomDependencyResolver.swift; sourceTree = "<group>"; };
-		E13831CA21F33F090081F481 /* CustomParametersTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomParametersTests.swift; sourceTree = "<group>"; };
+		E1BBF10F220AE655000A0D22 /* VariantCreating.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VariantCreating.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -93,10 +77,6 @@
 		E131C0B621FD8FE500B0A2E7 /* Internal */ = {
 			isa = PBXGroup;
 			children = (
-				E13831C821F33B190081F481 /* CustomDependencyResolver.swift */,
-				E13831C621F33AD20081F481 /* DependencyResolver.swift */,
-				E13831C421F339D00081F481 /* DependencyStore.swift */,
-				E126925221FC4459002FBC01 /* InterfaceResolver.swift */,
 				E13831C221F3337A0081F481 /* RecursiveLock.swift */,
 			);
 			path = Internal;
@@ -124,15 +104,14 @@
 			isa = PBXGroup;
 			children = (
 				E13831B421F2E2230081F481 /* Container.swift */,
-				E131C0B421FD8DE000B0A2E7 /* CustomInjectableObject.swift */,
-				E131C0B921FD90D700B0A2E7 /* CustomInjectableValue.swift */,
 				E13831B821F2E2960081F481 /* DependencyContainer.swift */,
 				E138319C21F2C3A40081F481 /* Info.plist */,
 				E138319B21F2C3A40081F481 /* Injectable.h */,
 				E13831B221F2C3BA0081F481 /* InjectableObject.swift */,
-				E131C0B721FD90AA00B0A2E7 /* InjectableValue.swift */,
+				E131C0B721FD90AA00B0A2E7 /* Injectable.swift */,
 				E131C0B621FD8FE500B0A2E7 /* Internal */,
-				E13831B621F2E27C0081F481 /* Lifetime.swift */,
+				E13831B621F2E27C0081F481 /* LifetimeProviding.swift */,
+				E1BBF10F220AE655000A0D22 /* VariantCreating.swift */,
 			);
 			path = Injectable;
 			sourceTree = "<group>";
@@ -140,7 +119,6 @@
 		E13831A521F2C3A40081F481 /* InjectableTests */ = {
 			isa = PBXGroup;
 			children = (
-				E13831CA21F33F090081F481 /* CustomParametersTests.swift */,
 				E13831BA21F2E5AF0081F481 /* CycleTests.swift */,
 				E13831BC21F2F1910081F481 /* EphemeralLifetimeTests.swift */,
 				E13831A821F2C3A40081F481 /* Info.plist */,
@@ -148,8 +126,6 @@
 				0195EAAE21F5E9A40008A143 /* InterfaceResolutionTests.swift */,
 				E13831C021F2F2070081F481 /* PersistentLifetimeTests.swift */,
 				E13831BE21F2F1EE0081F481 /* TransientLifetimeTests.swift */,
-				E131C0B221FD3D8900B0A2E7 /* ValueTypeTests.swift */,
-				E131C0BB21FDB10F00B0A2E7 /* ReadmeExamples.swift */,
 			);
 			path = InjectableTests;
 			sourceTree = "<group>";
@@ -264,16 +240,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				E13831B521F2E2230081F481 /* Container.swift in Sources */,
-				E13831C921F33B190081F481 /* CustomDependencyResolver.swift in Sources */,
-				E131C0B521FD8DE000B0A2E7 /* CustomInjectableObject.swift in Sources */,
-				E131C0BA21FD90D700B0A2E7 /* CustomInjectableValue.swift in Sources */,
 				E13831B921F2E2960081F481 /* DependencyContainer.swift in Sources */,
-				E13831C721F33AD20081F481 /* DependencyResolver.swift in Sources */,
-				E13831C521F339D00081F481 /* DependencyStore.swift in Sources */,
 				E13831B321F2C3BA0081F481 /* InjectableObject.swift in Sources */,
-				E131C0B821FD90AA00B0A2E7 /* InjectableValue.swift in Sources */,
-				E126925321FC4459002FBC01 /* InterfaceResolver.swift in Sources */,
-				E13831B721F2E27C0081F481 /* Lifetime.swift in Sources */,
+				E131C0B821FD90AA00B0A2E7 /* Injectable.swift in Sources */,
+				E1BBF110220AE655000A0D22 /* VariantCreating.swift in Sources */,
+				E13831B721F2E27C0081F481 /* LifetimeProviding.swift in Sources */,
 				E13831C321F3337A0081F481 /* RecursiveLock.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -282,15 +253,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E13831CB21F33F090081F481 /* CustomParametersTests.swift in Sources */,
 				E13831BB21F2E5AF0081F481 /* CycleTests.swift in Sources */,
 				E13831BD21F2F1910081F481 /* EphemeralLifetimeTests.swift in Sources */,
 				E13831A721F2C3A40081F481 /* InjectableTests.swift in Sources */,
 				0195EAAF21F5E9A40008A143 /* InterfaceResolutionTests.swift in Sources */,
 				E13831C121F2F2070081F481 /* PersistentLifetimeTests.swift in Sources */,
-				E131C0BC21FDB11000B0A2E7 /* ReadmeExamples.swift in Sources */,
 				E13831BF21F2F1EE0081F481 /* TransientLifetimeTests.swift in Sources */,
-				E131C0B321FD3D8900B0A2E7 /* ValueTypeTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

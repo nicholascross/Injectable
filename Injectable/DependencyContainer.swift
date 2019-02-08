@@ -9,95 +9,85 @@
 import Foundation
 
 public class DependencyContainer: Container {
-    public static let shared: DependencyContainer = .init()
+    private var transientObjects: NSMapTable<NSString, AnyObject> = .strongToStrongObjects()
+    private let persistentObjects: NSMapTable<NSString, AnyObject> = .strongToStrongObjects()
+    private let lock: RecursiveLock = .init()
+    private var registeredResolvers: [String: (Container) -> Any] = [:]
 
-    private var basicResolver: DependencyResolver!
-    private var interfaceResolver: InterfaceResolver!
-    private var customResolver: CustomerDependencyResolver!
-
-    public init() {
-        let dependencyStore = DependencyStore()
-        basicResolver = .init(container: self, store: dependencyStore)
-        customResolver = .init(container: self, store: dependencyStore)
-        interfaceResolver = .init(container: self)
+    public func resolve<Object: Injectable>(variant: String) -> Object {
+        switch Object.lifetime {
+        case .transient: return resolve(table: transientObjects, variant: variant)
+        case .persistent: return resolve(table: persistentObjects, variant: variant)
+        case .ephemeral: return Object.createInjectable(inContainer: self, variant: variant)
+        }
     }
 
-    // MARK: Interface registration
-
-    public func register<Interface, Object: InjectableValue>(interface: Interface.Type, implementation: Object.Type) {
-        interfaceResolver.register(interface: interface, implementation: implementation)
+    public func register<Interface, InjectableType: Injectable>(interface: Interface.Type, implementation: InjectableType.Type) {
+        register(interface: interface, variant: "_") { container -> InjectableType in return container.resolve() }
     }
 
-    public func register<Interface, Object: InjectableValue>(interface: Interface.Type, _ resolver: @escaping (Container) -> Object) {
-        interfaceResolver.register(interface: interface, resolver)
+    public func register<Interface, InjectableType: Injectable>(interface: Interface.Type, implementation: InjectableType.Type, variant: String) {
+        register(interface: interface, variant: variant) { container -> InjectableType in return container.resolve() }
     }
 
-    public func register<Interface, Type: CustomInjectableValue>(interface: Interface.Type, type: Type.Type, key: String, _ provider: @escaping (Container) -> Type.ParameterType) {
-        customResolver.register(type: type, key: key, provider)
-        interfaceResolver.register(interface: interface, type: type, key: key, provider)
+    public func register<Interface, InjectableType: Injectable>(interface: Interface.Type, variant: String, _ resolver: @escaping (Container) -> InjectableType) {
+        let key = "\(String(describing: Interface.self))-\(variant)"
+        registeredResolvers[key] = resolver
     }
 
-    public func register<Interface, Object: InjectableObject>(interface: Interface.Type, implementation: Object.Type) {
-        interfaceResolver.register(interface: interface, implementation: implementation)
+    public func resolveInterface<Interface>(variant: String) -> Interface! {
+        let key = "\(String(describing: Interface.self))-\(variant)"
+        guard let resolver = registeredResolvers[key] else {
+            return nil
+        }
+
+        return resolver(self) as? Interface
     }
 
-    public func register<Interface, Object: InjectableObject>(interface: Interface.Type, _ resolver: @escaping (Container) -> Object) {
-        interfaceResolver.register(interface: interface, resolver)
+    func store<Object: Injectable>(object: Object, variant: String) {
+        let key = "\(String(describing: Object.self))-\(variant)"
+        switch Object.lifetime {
+        case .transient: transientObjects.setObject(WeakBox.box(object: object as AnyObject), forKey: key as NSString)
+        case .persistent: persistentObjects.setObject(object as AnyObject, forKey: key as NSString)
+        case .ephemeral: return
+        }
     }
 
-    public func register<Interface, Type: CustomInjectableObject>(interface: Interface.Type, type: Type.Type, key: String, _ provider: @escaping (Container) -> Type.ParameterType) {
-        customResolver.register(type: type, key: key, provider)
-        interfaceResolver.register(interface: interface, type: type, key: key, provider)
-    }
+    private func resolve<Object: Injectable>(table: NSMapTable<NSString, AnyObject>, variant: String, boxed: Bool = false) -> Object {
+        return lock.synchronized {
+            let key = "\(String(describing: Object.self))-\(variant)"
 
-    // MARK: Custom parameter registration
+            guard let existingObject = table.object(forKey: key as NSString) else {
+                //trigger purge
+                return Object.createInjectable(inContainer: self, variant: variant)
+            }
 
-    public func register<Type: CustomInjectableValue>(type: Type.Type, key: String, _ provider: @escaping (Container) -> Type.ParameterType) {
-        customResolver.register(type: type, key: key, provider)
-    }
+            guard let object = WeakBox.unbox(object: existingObject) as? Object else {
+                return Object.createInjectable(inContainer: self, variant: variant)
+            }
 
-    public func register<Type: CustomInjectableObject>(type: Type.Type, key: String, _ provider: @escaping (Container) -> Type.ParameterType) {
-        customResolver.register(type: type, key: key, provider)
-    }
-
-    // MARK: Basic resolvers
-
-    public func resolve<Value: InjectableValue>() -> Value {
-        return basicResolver.resolve()
-    }
-
-    public func resolve<Object: InjectableObject>(lifetime: Lifetime) -> Object {
-        return basicResolver.resolve(lifetime: lifetime)
-    }
-
-    // MARK: Custom parameter resolvers
-
-    public func resolve<Value: CustomInjectableValue>(key: String) -> Value {
-        return customResolver.resolve(key: key)
-    }
-
-    public func resolve<Object: CustomInjectableObject>(key: String, lifetime: Lifetime) -> Object {
-        return customResolver.resolve(key: key, lifetime: lifetime)
-    }
-
-    // MARK: Interface resolvers
-
-    public func resolveInterface<Interface>() -> Interface! {
-        return interfaceResolver.resolveInterface()
-    }
-
-    public func resolveInterface<Interface>(key: String) -> Interface! {
-        return interfaceResolver.resolveInterface(key: key)
+            return object
+        }
     }
 
 }
 
-extension DependencyContainer {
-    public func register<Type: CustomInjectableValue>(type: Type.Type, key: String) where Type.ParameterType == String {
-       register(type: type.self, key: key) { container in return key }
+private class WeakBox {
+    weak var item: AnyObject?
+
+    init(item: AnyObject) {
+        self.item = item
     }
 
-    public func register<Type: CustomInjectableObject>(type: Type.Type, key: String) where Type.ParameterType == String {
-        register(type: type.self, key: key) { container in return key }
+    static func unbox(object: AnyObject) -> AnyObject? {
+        guard let box = object as? WeakBox else {
+            return object
+        }
+
+        return box.item
+    }
+
+    static func box(object: AnyObject) -> AnyObject {
+        return WeakBox(item: object)
     }
 }
