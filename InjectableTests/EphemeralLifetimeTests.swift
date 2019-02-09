@@ -10,36 +10,17 @@ import Foundation
 import XCTest
 @testable import Injectable
 
-private class WebFramework: InjectableObject {
-
-    required init(container: Container) {
-
+private class JavaScriptWebFramework: Injectable {
+    static func create(inContainer container: Container, variant: String?) -> JavaScriptWebFramework {
+        return JavaScriptWebFramework()
     }
 }
 
-private class JavaScriptWebFramework: WebFramework {
-
+private class StaticSiteGenerator: Injectable, LifetimeProviding {
     static let lifetime: Lifetime = .ephemeral
 
-}
-
-private class StaticWebsiteGenerator: InjectableObject {
-    static let lifetime: Lifetime = .transient
-
-    let framework: WebFramework
-
-    required init(container: Container) {
-        framework = container.resolve()
-    }
-}
-
-private class DynamicWebsiteGenerator: InjectableObject {
-    static let lifetime: Lifetime = .transient
-
-    let framework: JavaScriptWebFramework
-
-    required init(container: Container) {
-        framework = container.resolve()
+    static func create(inContainer container: Container, variant: String?) -> StaticSiteGenerator {
+        return StaticSiteGenerator()
     }
 }
 
@@ -56,29 +37,17 @@ class EphemeralLifetimeTests: XCTestCase {
     }
 
     func testEphemeralLifetimeWhenDefault() {
-        let generator1: StaticWebsiteGenerator = container.resolve(lifetime: .ephemeral)
-        let generator2: StaticWebsiteGenerator = container.resolve(lifetime: .ephemeral)
+        let webFramework1: JavaScriptWebFramework = container.resolve()
+        let webFramework2: JavaScriptWebFramework = container.resolve()
 
-        XCTAssert(generator1 !== generator2)
-        XCTAssert(generator1.framework !== generator2.framework)
+        XCTAssert(webFramework1 !== webFramework2)
     }
 
-    func testEphemeralLifetimeWhenExplicit() {
-        let generator1: DynamicWebsiteGenerator = container.resolve(lifetime: .ephemeral)
-        let generator2: DynamicWebsiteGenerator = container.resolve(lifetime: .ephemeral)
-
-        XCTAssert(generator1 !== generator2)
-        XCTAssert(generator1.framework !== generator2.framework)
-    }
 
     func testEphemeralLifetimeWhenSpecified() {
-        let generator1: StaticWebsiteGenerator = container.resolve()
-        let generator2: StaticWebsiteGenerator = container.resolve()
+        let webFramework1: StaticSiteGenerator = container.resolve()
+        let webFramework2: StaticSiteGenerator = container.resolve()
 
-        XCTAssert(generator1 === generator2)
-
-        let generator3: StaticWebsiteGenerator = container.resolve(lifetime: .ephemeral)
-
-        XCTAssert(generator1 !== generator3)
+        XCTAssert(webFramework1 !== webFramework2)
     }
 }

@@ -10,21 +10,11 @@ import Foundation
 import XCTest
 @testable import Injectable
 
-private class Person: InjectableObject {
-    let hobby: Programming
-
-    required init(container: Container) {
-        hobby = container.resolve()
-    }
-}
-
-private class Programming: InjectableObject {
+private class StaticSiteGenerator: Injectable, LifetimeProviding {
     static let lifetime: Lifetime = .persistent
 
-    let language: String
-
-    required init(container: Container) {
-        language = "Swift"
+    static func create(inContainer container: Container, variant: String?) -> StaticSiteGenerator {
+        return StaticSiteGenerator()
     }
 }
 
@@ -40,18 +30,15 @@ class PersistentLifetimeTests: XCTestCase {
         container = nil
     }
 
-    func testPersistentLifetime() {
-        let person1: Person = container.resolve()
-        let person2: Person = container.resolve()
-
-        XCTAssert(person1 !== person2)
-        XCTAssert(person1.hobby === person2.hobby)
-    }
-
     func testPersistentLifetimeWhenSpecified() {
-        let person1: Person = container.resolve(lifetime: .persistent)
-        let person2: Person = container.resolve(lifetime: .persistent)
+        var webFramework1: StaticSiteGenerator? = container.resolve()
+        weak var webFramework2: StaticSiteGenerator? = container.resolve()
 
-        XCTAssert(person1 === person2)
+        XCTAssert(webFramework1 === webFramework2)
+        XCTAssertNotNil(webFramework2)
+
+        webFramework1 = nil
+
+        XCTAssertNotNil(webFramework2)
     }
 }

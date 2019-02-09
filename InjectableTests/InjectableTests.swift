@@ -9,55 +9,88 @@
 import XCTest
 @testable import Injectable
 
-private class Ecosystem: InjectableObject {
+private class Ecosystem: Injectable {
     let animals: [Animal]
     let plants: [Plant]
 
-    required init(container: Container) {
+    init(container: Container) {
         self.animals = [container.resolve() as Cat, container.resolve() as Dog, container.resolve() as Moose]
         self.plants = [container.resolve(), container.resolve()]
+    }
+
+    static func create(inContainer container: Container, variant: String?) -> Ecosystem {
+        return Ecosystem(container: container)
     }
 }
 
 private class Animal {
     let genome: Genome
 
-    required init(container: Container) {
-        self.genome = container.resolve()
+    init(genome: Genome) {
+        self.genome = genome
     }
 }
 
-private class Dog: Animal, InjectableObject {
-
+private class Dog: Animal, Injectable {
+    static func create(inContainer container: Container, variant: String?) -> Dog {
+        return Dog(genome: container.resolve())
+    }
 }
 
-private class Cat: Animal, InjectableObject {
+private class Cat: Animal, Injectable {
 
+    static func create(inContainer container: Container, variant: String?) -> Cat {
+        return Cat(genome: container.resolve())
+    }
 }
 
-private class Moose: Animal, InjectableObject {
+private class Moose: Animal, Injectable {
 
     let antlers: Int
 
-    required init(container: Container) {
-        antlers = 2
-        super.init(container: container)
+    init(genome: Genome, antlers: Int) {
+        self.antlers = antlers
+        super.init(genome: genome)
+    }
+
+    static func create(inContainer container: Container, variant: String?) -> Moose {
+        return Moose(genome: container.resolve(), antlers: 2)
+    }
+
+    static func didCreate(object: Moose, inContainer container: Container) {
+
     }
 }
 
-private class Plant: InjectableObject {
+private class Plant: Injectable {
     let genome: Genome
 
-    required init(container: Container) {
-        self.genome = container.resolve()
+    static func create(inContainer container: Container, variant: String?) -> Plant {
+        return Plant(genome: container.resolve())
+    }
+
+    static func didCreate(object: Plant, inContainer container: Container) {
+
+    }
+
+    init(genome: Genome) {
+        self.genome = genome
     }
 }
 
-private class Genome: InjectableObject {
+private class Genome: Injectable {
     let data: Data
 
-    required init(container: Container) {
-        data = .init()
+    static func create(inContainer container: Container, variant: String?) -> Genome {
+        return Genome(data: Data())
+    }
+
+    static func didCreate(object: Genome, inContainer container: Container) {
+
+    }
+
+    init(data: Data) {
+        self.data = data
     }
 }
 

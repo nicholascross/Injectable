@@ -14,9 +14,13 @@ private protocol Planet {
 
 }
 
-private class Earth: Planet, InjectableObject {
-    required init(container: Container) {
+private class Earth: Planet, Injectable {
+    static func create(inContainer container: Container, variant: String?) -> Earth {
+        if variant == "Venus" {
+            return Venus()
+        }
 
+        return Earth()
     }
 }
 
@@ -24,17 +28,15 @@ private class Venus: Earth {
 
 }
 
-private class Mars: Planet, CustomInjectableObject {
-    typealias ParameterType = Bool
-
+private class Mars: Planet, Injectable {
     var inhabitted: Bool
 
-    required init(container: Container, parameter: ParameterType) {
-        inhabitted = parameter
+    static func create(inContainer container: Container, variant: String?) -> Mars {
+        return Mars(inhabitted: true)
     }
 
-    required init(container: Container) {
-        inhabitted = false
+    init(inhabitted: Bool) {
+        self.inhabitted = inhabitted
     }
 }
 
@@ -51,7 +53,7 @@ class InterfaceResolutionTests: XCTestCase {
     }
 
     func testProtocolResolution() {
-        container.register(interface: Planet.self) { container in container.resolve() as Earth }
+        container.register(interface: Planet.self) { container -> Earth in return container.resolve() }
         let planet: Planet = container.resolveInterface()
         XCTAssert(planet is Earth)
     }
@@ -63,55 +65,9 @@ class InterfaceResolutionTests: XCTestCase {
     }
 
     func testSubClassResolution() {
-        container.register(interface: Earth.self) { container in container.resolve() as Venus }
+        container.register(interface: Earth.self) { container in container.resolve(variant: "Venus") as Earth }
         let planet: Earth = container.resolveInterface()
         XCTAssert(planet is Venus)
     }
 
-    func testIndirectInterfaceResolution() {
-        container.register(interface: Planet.self) { container -> Earth in container.resolveInterface() }
-        container.register(interface: Earth.self) { container -> Venus in container.resolve() }
-
-        let planet: Planet = container.resolveInterface()
-        XCTAssert(planet is Venus)
-
-        let earth: Earth = container.resolve()
-        XCTAssertFalse(earth is Venus)
-    }
-
-    func testCustomInjectionForInterface() {
-        container.register(interface: Planet.self, type: Mars.self, key: "2040") { _ in return true }
-        container.register(interface: Planet.self, type: Mars.self, key: "2020") { _ in return false }
-
-        var planet: Planet = container.resolveInterface(key: "2040")
-
-        XCTAssert(planet is Mars)
-        if let marsColony = planet as? Mars {
-            XCTAssert(marsColony.inhabitted)
-        }
-
-        planet = container.resolveInterface(key: "2020")
-
-        XCTAssert(planet is Mars)
-        if let marsColony = planet as? Mars {
-            XCTAssertFalse(marsColony.inhabitted)
-        }
-
-        var mars: Mars = container.resolve(key: "2040")
-        XCTAssert(mars.inhabitted)
-        mars = container.resolve(key: "2020")
-        XCTAssertFalse(mars.inhabitted)
-    }
-
-    func testInvalidRegistration() {
-        let planet: Planet! = container.resolveInterface()
-
-        XCTAssertNil(planet)
-    }
-
-    func testInvalidRegistrationWithKey() {
-        let planet: Planet! = container.resolveInterface(key: "asdf")
-
-        XCTAssertNil(planet)
-    }
 }

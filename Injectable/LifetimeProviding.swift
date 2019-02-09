@@ -8,6 +8,10 @@
 
 import Foundation
 
+public protocol LifetimeProviding: AnyObject {
+    static var lifetime: Lifetime { get }
+}
+
 public enum Lifetime {
     case ephemeral  //always a new object
     case transient  //a new object unless there is an instance already in memory
