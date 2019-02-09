@@ -19,7 +19,7 @@ A Swift dependency injection container which minimises the need for centralised 
 
 # Usage examples
 
-Simple example
+See more [usage examples here](UsageExamples.md)
 
 ```swift
 import Foundation
@@ -67,4 +67,4 @@ class ReadMeTests: XCTestCase {
 }
 ```
 
-See more [usage examples here](UsageExamples.md)
+

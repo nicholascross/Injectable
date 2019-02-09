@@ -10,13 +10,9 @@ See [InjectableTests.swift](InjectableTests/InjectableTests.swift)
 
 ## Object lifetime
 
-- Ephemeral: will always resolve a new object
-- Transient: will resolve a new object unless there is an instance already in memory
-- Persistent: will always resolve the same object
-
-See [EphemeralLifetimeTests](InjectableTests/EphemeralLifetimeTests.swift)
-See [TransientLifetimeTests](InjectableTests/TransientLifetimeTests.swift)
-See [PersistentLifetimeTests](InjectableTests/PersistentLifetimeTests.swift)
+- Ephemeral: will always resolve a new object. See [EphemeralLifetimeTests](InjectableTests/EphemeralLifetimeTests.swift)
+- Transient: will resolve a new object unless there is an instance already in memory. See [TransientLifetimeTests](InjectableTests/TransientLifetimeTests.swift)
+- Persistent: will always resolve the same object. See [PersistentLifetimeTests](InjectableTests/PersistentLifetimeTests.swift)
 
 ## Type variants
 
