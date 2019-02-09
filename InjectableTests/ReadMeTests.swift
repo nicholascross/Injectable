@@ -1,27 +1,11 @@
-# Injectable
+//
+//  ReadMeTests.swift
+//  InjectableTests
+//
+//  Created by Nicholas Cross on 9/2/19.
+//  Copyright © 2019 Nicholas Cross. All rights reserved.
+//
 
-A Swift dependency injection container which minimises the need for centralised registration
-
-# Features
-
-- Support decentralised dependency resolution
-- Support varying object lifetimes
-- Support reference and value types
-- Support resolution of type varients
-- Support registration of interface types to allow for resolving dependencies where the implementing class is not available
-- Support for cyclic dependencies
-
-# Trade-offs and limitations
-
-- Registrationless resolution requires visibility of the exact type being resolved
-- Resolving via an interface works around the above issue but requires registration, this registration is not enforced at compile time, meaning it can fail at runtime if the registration was ommitted
-- Coupling between dependency injection framework and injected types through protocol conformance
-
-# Usage examples
-
-Simple example
-
-```swift
 import Foundation
 import XCTest
 @testable import Injectable
@@ -65,6 +49,3 @@ class ReadMeTests: XCTestCase {
         XCTAssertTrue(person.pet is Cat)
     }
 }
-```
-
-See more [usage examples here](UsageExamples.md)

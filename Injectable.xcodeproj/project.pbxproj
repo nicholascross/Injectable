@@ -21,6 +21,8 @@
 		E13831BF21F2F1EE0081F481 /* TransientLifetimeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E13831BE21F2F1EE0081F481 /* TransientLifetimeTests.swift */; };
 		E13831C121F2F2070081F481 /* PersistentLifetimeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E13831C021F2F2070081F481 /* PersistentLifetimeTests.swift */; };
 		E13831C321F3337A0081F481 /* RecursiveLock.swift in Sources */ = {isa = PBXBuildFile; fileRef = E13831C221F3337A0081F481 /* RecursiveLock.swift */; };
+		E151AF39220E8622002F6E70 /* ReadMeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E151AF38220E8622002F6E70 /* ReadMeTests.swift */; };
+		E151AF3B220E8BFC002F6E70 /* TypeVariantTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E151AF3A220E8BFC002F6E70 /* TypeVariantTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +53,8 @@
 		E13831BE21F2F1EE0081F481 /* TransientLifetimeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransientLifetimeTests.swift; sourceTree = "<group>"; };
 		E13831C021F2F2070081F481 /* PersistentLifetimeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistentLifetimeTests.swift; sourceTree = "<group>"; };
 		E13831C221F3337A0081F481 /* RecursiveLock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecursiveLock.swift; sourceTree = "<group>"; };
+		E151AF38220E8622002F6E70 /* ReadMeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadMeTests.swift; sourceTree = "<group>"; };
+		E151AF3A220E8BFC002F6E70 /* TypeVariantTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeVariantTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -123,6 +127,8 @@
 				0195EAAE21F5E9A40008A143 /* InterfaceResolutionTests.swift */,
 				E13831C021F2F2070081F481 /* PersistentLifetimeTests.swift */,
 				E13831BE21F2F1EE0081F481 /* TransientLifetimeTests.swift */,
+				E151AF38220E8622002F6E70 /* ReadMeTests.swift */,
+				E151AF3A220E8BFC002F6E70 /* TypeVariantTests.swift */,
 			);
 			path = InjectableTests;
 			sourceTree = "<group>";
@@ -249,8 +255,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E151AF39220E8622002F6E70 /* ReadMeTests.swift in Sources */,
 				E13831BB21F2E5AF0081F481 /* CycleTests.swift in Sources */,
 				E13831BD21F2F1910081F481 /* EphemeralLifetimeTests.swift in Sources */,
+				E151AF3B220E8BFC002F6E70 /* TypeVariantTests.swift in Sources */,
 				E13831A721F2C3A40081F481 /* InjectableTests.swift in Sources */,
 				0195EAAF21F5E9A40008A143 /* InterfaceResolutionTests.swift in Sources */,
 				E13831C121F2F2070081F481 /* PersistentLifetimeTests.swift in Sources */,

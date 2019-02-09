@@ -23,11 +23,11 @@ public class DependencyContainer: Container {
     }
 
     public func register<Interface, InjectableType: Injectable>(interface: Interface.Type, implementation: InjectableType.Type) {
-        register(interface: interface, variant: nil) { container -> InjectableType in return container.resolve() }
+        register(interface: interface, implementation: implementation, variant: nil)
     }
 
     public func register<Interface, InjectableType: Injectable>(interface: Interface.Type, implementation: InjectableType.Type, variant: String?) {
-        register(interface: interface, variant: variant) { container -> InjectableType in return container.resolve() }
+        register(interface: interface, variant: variant) { container -> InjectableType in return container.resolve(variant: variant) }
     }
 
     public func register<Interface, InjectableType: Injectable>(interface: Interface.Type, _ resolver: @escaping (Container) -> InjectableType) {
