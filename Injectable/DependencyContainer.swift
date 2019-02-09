@@ -77,23 +77,3 @@ public class DependencyContainer: Container {
         return "\(String(describing: object))-\(variant)"
     }
 }
-
-private class WeakBox {
-    weak var item: AnyObject?
-
-    init(item: AnyObject) {
-        self.item = item
-    }
-
-    static func unbox(object: AnyObject?) -> AnyObject? {
-        guard let box = object as? WeakBox else {
-            return object
-        }
-
-        return box.item
-    }
-
-    static func box(object: AnyObject) -> AnyObject {
-        return WeakBox(item: object)
-    }
-}
