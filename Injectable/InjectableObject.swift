@@ -9,12 +9,6 @@
 import Foundation
 
 public protocol InjectableObject {
-    associatedtype InjectorType
-
-    static var injector: InjectorType.Type { get }
-}
-
-public protocol Injector {
     associatedtype InjectedType: InjectableObject
 
     static func create(inContainer container: Container, variant: String?) -> InjectedType
@@ -22,7 +16,7 @@ public protocol Injector {
     static func didCreate(object: InjectedType, inContainer container: Container)
 }
 
-extension Injector {
+extension InjectableObject {
     static func didCreate(object: InjectedType, inContainer container: Container) {
         
     }
