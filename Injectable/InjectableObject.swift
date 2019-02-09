@@ -17,18 +17,12 @@ public protocol InjectableObject {
 public protocol Injector {
     associatedtype InjectedType: InjectableObject
 
-    static func create(inContainer container: Container) -> InjectedType
-
-    static func create(inContainer container: Container, variant: String) -> InjectedType
+    static func create(inContainer container: Container, variant: String?) -> InjectedType
 
     static func didCreate(object: InjectedType, inContainer container: Container)
 }
 
 extension Injector {
-    static func create(inContainer container: Container, variant: String) -> InjectedType {
-        return create(inContainer: container)
-    }
-
     static func didCreate(object: InjectedType, inContainer container: Container) {
         
     }

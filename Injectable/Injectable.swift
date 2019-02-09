@@ -23,19 +23,10 @@ public extension Injectable {
     }
 
     static func createInjectable(inContainer container: DependencyContainer, variant: String?) -> Self {
-        let injectable: Self = createVariant(inContainer: container, variant: variant)
+        let injectable: Self = Self.injector.create(inContainer: container, variant: variant)
         container.store(object: injectable, variant: variant)
         Self.injector.didCreate(object: injectable, inContainer: container)
         return injectable
-
-    }
-
-    private static func createVariant(inContainer container: Container, variant: String?) -> Self {
-        guard let variant = variant else {
-            return Self.injector.create(inContainer: container)
-        }
-
-        return Self.injector.create(inContainer: container, variant: variant)
     }
 
     public static var injector: InjectorType.Type {

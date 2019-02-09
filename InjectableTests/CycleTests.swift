@@ -16,7 +16,7 @@ private class TestCycle: Injectable, LifetimeProviding {
 
     var startCycle: TestCycle2!
 
-    static func create(inContainer container: Container) -> TestCycle {
+    static func create(inContainer container: Container, variant: String?) -> TestCycle {
         return TestCycle()
     }
 
@@ -34,7 +34,7 @@ private class TestCycle2: Injectable, LifetimeProviding {
         self.completeCycle = completeCycle
     }
 
-    static func create(inContainer container: Container) -> TestCycle2 {
+    static func create(inContainer container: Container, variant: String?) -> TestCycle2 {
         return TestCycle2(completeCycle: container.resolve())
     }
 }

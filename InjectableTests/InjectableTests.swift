@@ -18,7 +18,7 @@ private class Ecosystem: Injectable {
         self.plants = [container.resolve(), container.resolve()]
     }
 
-    static func create(inContainer container: Container) -> Ecosystem {
+    static func create(inContainer container: Container, variant: String?) -> Ecosystem {
         return Ecosystem(container: container)
     }
 }
@@ -32,14 +32,14 @@ private class Animal {
 }
 
 private class Dog: Animal, Injectable {
-    static func create(inContainer container: Container) -> Dog {
+    static func create(inContainer container: Container, variant: String?) -> Dog {
         return Dog(genome: container.resolve())
     }
 }
 
 private class Cat: Animal, Injectable {
 
-    static func create(inContainer container: Container) -> Cat {
+    static func create(inContainer container: Container, variant: String?) -> Cat {
         return Cat(genome: container.resolve())
     }
 }
@@ -53,7 +53,7 @@ private class Moose: Animal, Injectable {
         super.init(genome: genome)
     }
 
-    static func create(inContainer container: Container) -> Moose {
+    static func create(inContainer container: Container, variant: String?) -> Moose {
         return Moose(genome: container.resolve(), antlers: 2)
     }
 
@@ -65,7 +65,7 @@ private class Moose: Animal, Injectable {
 private class Plant: Injectable {
     let genome: Genome
 
-    static func create(inContainer container: Container) -> Plant {
+    static func create(inContainer container: Container, variant: String?) -> Plant {
         return Plant(genome: container.resolve())
     }
 
@@ -81,7 +81,7 @@ private class Plant: Injectable {
 private class Genome: Injectable {
     let data: Data
 
-    static func create(inContainer container: Container) -> Genome {
+    static func create(inContainer container: Container, variant: String?) -> Genome {
         return Genome(data: Data())
     }
 

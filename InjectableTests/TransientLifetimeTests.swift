@@ -13,7 +13,7 @@ import XCTest
 private class StaticSiteGenerator: Injectable, LifetimeProviding {
     static let lifetime: Lifetime = .transient
 
-    static func create(inContainer container: Container) -> StaticSiteGenerator {
+    static func create(inContainer container: Container, variant: String?) -> StaticSiteGenerator {
         return StaticSiteGenerator()
     }
 }

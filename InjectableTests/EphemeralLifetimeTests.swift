@@ -11,7 +11,7 @@ import XCTest
 @testable import Injectable
 
 private class JavaScriptWebFramework: Injectable {
-    static func create(inContainer container: Container) -> JavaScriptWebFramework {
+    static func create(inContainer container: Container, variant: String?) -> JavaScriptWebFramework {
         return JavaScriptWebFramework()
     }
 }
@@ -19,7 +19,7 @@ private class JavaScriptWebFramework: Injectable {
 private class StaticSiteGenerator: Injectable, LifetimeProviding {
     static let lifetime: Lifetime = .ephemeral
 
-    static func create(inContainer container: Container) -> StaticSiteGenerator {
+    static func create(inContainer container: Container, variant: String?) -> StaticSiteGenerator {
         return StaticSiteGenerator()
     }
 }
