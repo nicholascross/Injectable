@@ -9,15 +9,15 @@
 import Foundation
 
 public class DependencyContainer: Container {
-    private var transientObjects: NSMapTable<NSString, AnyObject> = .strongToStrongObjects()
-    private let persistentObjects: NSMapTable<NSString, AnyObject> = .strongToStrongObjects()
+    private var transientObjects: [String: AnyObject] = [:]
+    private var persistentObjects: [String: AnyObject] = [:]
     private let lock: RecursiveLock = .init()
     private var registeredResolvers: [String: (Container) -> Any] = [:]
 
     public func resolve<Object: Injectable>(variant: String?) -> Object {
         switch Object.lifetime {
-        case .transient: return resolve(table: transientObjects, variant: variant)
-        case .persistent: return resolve(table: persistentObjects, variant: variant)
+        case .transient: return resolve(storage: transientObjects, variant: variant)
+        case .persistent: return resolve(storage: persistentObjects, variant: variant)
         case .ephemeral: return Object.createInjectable(inContainer: self, variant: variant)
         }
     }
@@ -52,17 +52,17 @@ public class DependencyContainer: Container {
         let key = storageKey(for: Object.self, variant: variant)
 
         switch Object.lifetime {
-        case .transient: transientObjects.setObject(WeakBox.box(object: object as AnyObject), forKey: key as NSString)
-        case .persistent: persistentObjects.setObject(object as AnyObject, forKey: key as NSString)
+        case .transient: transientObjects[key] = WeakBox.box(object: object as AnyObject)
+        case .persistent: persistentObjects[key] = object as AnyObject
         case .ephemeral: return
         }
     }
 
-    private func resolve<Object: Injectable>(table: NSMapTable<NSString, AnyObject>, variant: String?, boxed: Bool = false) -> Object {
+    private func resolve<Object: Injectable, StoredType: AnyObject>(storage: [String: StoredType], variant: String?, boxed: Bool = false) -> Object {
         return lock.synchronized {
             let key = storageKey(for: Object.self, variant: variant)
 
-            guard let object = WeakBox.unbox(object: table.object(forKey: key as NSString) ) as? Object else {
+            guard let object = WeakBox.unbox(object: storage[key]) as? Object else {
                 return Object.createInjectable(inContainer: self, variant: variant)
             }
 
