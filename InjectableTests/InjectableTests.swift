@@ -21,10 +21,6 @@ private class Ecosystem: Injectable {
     static func create(inContainer container: Container) -> Ecosystem {
         return Ecosystem(container: container)
     }
-
-    static func didCreate(object: Ecosystem, inContainer container: Container) {
-
-    }
 }
 
 private class Animal {
@@ -39,20 +35,12 @@ private class Dog: Animal, Injectable {
     static func create(inContainer container: Container) -> Dog {
         return Dog(genome: container.resolve())
     }
-
-    static func didCreate(object: Dog, inContainer container: Container) {
-
-    }
 }
 
 private class Cat: Animal, Injectable {
 
     static func create(inContainer container: Container) -> Cat {
         return Cat(genome: container.resolve())
-    }
-
-    static func didCreate(object: Cat, inContainer container: Container) {
-
     }
 }
 

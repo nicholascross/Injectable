@@ -16,10 +16,6 @@ private class StaticSiteGenerator: Injectable, LifetimeProviding {
     static func create(inContainer container: Container) -> StaticSiteGenerator {
         return StaticSiteGenerator()
     }
-
-    static func didCreate(object: StaticSiteGenerator, inContainer container: Container) {
-
-    }
 }
 
 class PersistentLifetimeTests: XCTestCase {

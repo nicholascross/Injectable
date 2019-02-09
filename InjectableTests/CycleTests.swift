@@ -37,10 +37,6 @@ private class TestCycle2: Injectable, LifetimeProviding {
     static func create(inContainer container: Container) -> TestCycle2 {
         return TestCycle2(completeCycle: container.resolve())
     }
-
-    static func didCreate(object: TestCycle2, inContainer container: Container) {
-
-    }
 }
 
 class CycleTests: XCTestCase {

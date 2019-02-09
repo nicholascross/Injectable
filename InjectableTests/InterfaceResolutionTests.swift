@@ -18,19 +18,11 @@ private class Earth: Planet, Injectable {
     static func create(inContainer container: Container) -> Earth {
         return Earth()
     }
-
-    static func didCreate(object: Earth, inContainer container: Container) {
-
-    }
 }
 
 private class Venus: Planet, Injectable {
     static func create(inContainer container: Container) -> Venus {
         return Venus()
-    }
-
-    static func didCreate(object: Venus, inContainer container: Container) {
-
     }
 }
 
@@ -39,10 +31,6 @@ private class Mars: Planet, Injectable {
 
     static func create(inContainer container: Container) -> Mars {
         return Mars(inhabitted: true)
-    }
-
-    static func didCreate(object: Mars, inContainer container: Container) {
-
     }
 
     init(inhabitted: Bool) {

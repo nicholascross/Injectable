@@ -28,4 +28,8 @@ extension Injector {
     static func create(inContainer container: Container, variant: String) -> InjectedType {
         return create(inContainer: container)
     }
+
+    static func didCreate(object: InjectedType, inContainer container: Container) {
+        
+    }
 }

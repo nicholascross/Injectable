@@ -14,10 +14,6 @@ private class JavaScriptWebFramework: Injectable {
     static func create(inContainer container: Container) -> JavaScriptWebFramework {
         return JavaScriptWebFramework()
     }
-
-    static func didCreate(object: JavaScriptWebFramework, inContainer container: Container) {
-
-    }
 }
 
 private class StaticSiteGenerator: Injectable, LifetimeProviding {
@@ -25,10 +21,6 @@ private class StaticSiteGenerator: Injectable, LifetimeProviding {
 
     static func create(inContainer container: Container) -> StaticSiteGenerator {
         return StaticSiteGenerator()
-    }
-
-    static func didCreate(object: StaticSiteGenerator, inContainer container: Container) {
-
     }
 }
 
