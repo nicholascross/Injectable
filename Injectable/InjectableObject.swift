@@ -19,5 +19,13 @@ public protocol Injector {
 
     static func create(inContainer container: Container) -> InjectedType
 
+    static func create(inContainer container: Container, variant: String) -> InjectedType
+
     static func didCreate(object: InjectedType, inContainer container: Container)
+}
+
+extension Injector {
+    static func create(inContainer container: Container, variant: String) -> InjectedType {
+        return create(inContainer: container)
+    }
 }

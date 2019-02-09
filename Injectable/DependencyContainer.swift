@@ -14,7 +14,7 @@ public class DependencyContainer: Container {
     private let lock: RecursiveLock = .init()
     private var registeredResolvers: [String: (Container) -> Any] = [:]
 
-    public func resolve<Object: Injectable>(variant: String) -> Object {
+    public func resolve<Object: Injectable>(variant: String?) -> Object {
         switch Object.lifetime {
         case .transient: return resolve(table: transientObjects, variant: variant)
         case .persistent: return resolve(table: persistentObjects, variant: variant)
@@ -23,20 +23,24 @@ public class DependencyContainer: Container {
     }
 
     public func register<Interface, InjectableType: Injectable>(interface: Interface.Type, implementation: InjectableType.Type) {
-        register(interface: interface, variant: "_") { container -> InjectableType in return container.resolve() }
+        register(interface: interface, variant: nil) { container -> InjectableType in return container.resolve() }
     }
 
-    public func register<Interface, InjectableType: Injectable>(interface: Interface.Type, implementation: InjectableType.Type, variant: String) {
+    public func register<Interface, InjectableType: Injectable>(interface: Interface.Type, implementation: InjectableType.Type, variant: String?) {
         register(interface: interface, variant: variant) { container -> InjectableType in return container.resolve() }
     }
 
-    public func register<Interface, InjectableType: Injectable>(interface: Interface.Type, variant: String, _ resolver: @escaping (Container) -> InjectableType) {
-        let key = "\(String(describing: Interface.self))-\(variant)"
+    public func register<Interface, InjectableType: Injectable>(interface: Interface.Type, _ resolver: @escaping (Container) -> InjectableType) {
+        register(interface: interface, variant: nil, resolver)
+    }
+
+    public func register<Interface, InjectableType: Injectable>(interface: Interface.Type, variant: String?, _ resolver: @escaping (Container) -> InjectableType) {
+        let key = storageKey(for: Interface.self, variant: variant)
         registeredResolvers[key] = resolver
     }
 
-    public func resolveInterface<Interface>(variant: String) -> Interface! {
-        let key = "\(String(describing: Interface.self))-\(variant)"
+    public func resolveInterface<Interface>(variant: String?) -> Interface! {
+        let key = storageKey(for: Interface.self, variant: variant)
         guard let resolver = registeredResolvers[key] else {
             return nil
         }
@@ -44,8 +48,9 @@ public class DependencyContainer: Container {
         return resolver(self) as? Interface
     }
 
-    func store<Object: Injectable>(object: Object, variant: String) {
-        let key = "\(String(describing: Object.self))-\(variant)"
+    func store<Object: Injectable>(object: Object, variant: String?) {
+        let key = storageKey(for: Object.self, variant: variant)
+
         switch Object.lifetime {
         case .transient: transientObjects.setObject(WeakBox.box(object: object as AnyObject), forKey: key as NSString)
         case .persistent: persistentObjects.setObject(object as AnyObject, forKey: key as NSString)
@@ -53,9 +58,9 @@ public class DependencyContainer: Container {
         }
     }
 
-    private func resolve<Object: Injectable>(table: NSMapTable<NSString, AnyObject>, variant: String, boxed: Bool = false) -> Object {
+    private func resolve<Object: Injectable>(table: NSMapTable<NSString, AnyObject>, variant: String?, boxed: Bool = false) -> Object {
         return lock.synchronized {
-            let key = "\(String(describing: Object.self))-\(variant)"
+            let key = storageKey(for: Object.self, variant: variant)
 
             guard let object = WeakBox.unbox(object: table.object(forKey: key as NSString) ) as? Object else {
                 return Object.createInjectable(inContainer: self, variant: variant)
@@ -65,6 +70,12 @@ public class DependencyContainer: Container {
         }
     }
 
+    private func storageKey<ObjectType>(for object: ObjectType, variant: String?) -> String {
+        guard let variant = variant else {
+            return "\(String(describing: object))"
+        }
+        return "\(String(describing: object))-\(variant)"
+    }
 }
 
 private class WeakBox {

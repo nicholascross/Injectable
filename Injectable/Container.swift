@@ -9,16 +9,16 @@
 import Foundation
 
 public protocol Container {
-    func resolve<Object: Injectable>(variant: String) -> Object
-    func resolveInterface<Interface>(variant: String) -> Interface!
+    func resolve<Object: Injectable>(variant: String?) -> Object
+    func resolveInterface<Interface>(variant: String?) -> Interface!
 }
 
 public extension Container {
     public func resolve<Object: Injectable>() -> Object {
-        return resolve(variant: "_")
+        return resolve(variant: nil)
     }
 
     public func resolveInterface<Interface>() -> Interface! {
-        return resolveInterface(variant: "_")
+        return resolveInterface(variant: nil)
     }
 }

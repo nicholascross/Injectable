@@ -22,7 +22,7 @@ public extension Injectable {
         return lifetimeInjector.lifetime
     }
 
-    static func createInjectable(inContainer container: DependencyContainer, variant: String) -> Self {
+    static func createInjectable(inContainer container: DependencyContainer, variant: String?) -> Self {
         let injectable: Self = createVariant(inContainer: container, variant: variant)
         container.store(object: injectable, variant: variant)
         Self.injector.didCreate(object: injectable, inContainer: container)
@@ -30,12 +30,12 @@ public extension Injectable {
 
     }
 
-    private static func createVariant(inContainer container: Container, variant: String) -> Self {
-        guard let variantCreating = Self.injector as? VariantCreating.Type else {
+    private static func createVariant(inContainer container: Container, variant: String?) -> Self {
+        guard let variant = variant else {
             return Self.injector.create(inContainer: container)
         }
 
-        return variantCreating.create(inContainer: container, injector: Self.injector, variant: variant)
+        return Self.injector.create(inContainer: container, variant: variant)
     }
 
     public static var injector: InjectorType.Type {

@@ -21,7 +21,6 @@
 		E13831BF21F2F1EE0081F481 /* TransientLifetimeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E13831BE21F2F1EE0081F481 /* TransientLifetimeTests.swift */; };
 		E13831C121F2F2070081F481 /* PersistentLifetimeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E13831C021F2F2070081F481 /* PersistentLifetimeTests.swift */; };
 		E13831C321F3337A0081F481 /* RecursiveLock.swift in Sources */ = {isa = PBXBuildFile; fileRef = E13831C221F3337A0081F481 /* RecursiveLock.swift */; };
-		E1BBF110220AE655000A0D22 /* VariantCreating.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1BBF10F220AE655000A0D22 /* VariantCreating.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,7 +51,6 @@
 		E13831BE21F2F1EE0081F481 /* TransientLifetimeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransientLifetimeTests.swift; sourceTree = "<group>"; };
 		E13831C021F2F2070081F481 /* PersistentLifetimeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistentLifetimeTests.swift; sourceTree = "<group>"; };
 		E13831C221F3337A0081F481 /* RecursiveLock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecursiveLock.swift; sourceTree = "<group>"; };
-		E1BBF10F220AE655000A0D22 /* VariantCreating.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VariantCreating.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -111,7 +109,6 @@
 				E131C0B721FD90AA00B0A2E7 /* Injectable.swift */,
 				E131C0B621FD8FE500B0A2E7 /* Internal */,
 				E13831B621F2E27C0081F481 /* LifetimeProviding.swift */,
-				E1BBF10F220AE655000A0D22 /* VariantCreating.swift */,
 			);
 			path = Injectable;
 			sourceTree = "<group>";
@@ -243,7 +240,6 @@
 				E13831B921F2E2960081F481 /* DependencyContainer.swift in Sources */,
 				E13831B321F2C3BA0081F481 /* InjectableObject.swift in Sources */,
 				E131C0B821FD90AA00B0A2E7 /* Injectable.swift in Sources */,
-				E1BBF110220AE655000A0D22 /* VariantCreating.swift in Sources */,
 				E13831B721F2E27C0081F481 /* LifetimeProviding.swift in Sources */,
 				E13831C321F3337A0081F481 /* RecursiveLock.swift in Sources */,
 			);
