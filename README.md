@@ -4,17 +4,17 @@ A Swift dependency injection container which minimises the need for centralised 
 
 # Features
 
-- Support decentralised dependency resolution
-- Support varying object lifetimes
-- Support reference and value types
-- Support resolution of type varients
-- Support registration of interface types to allow for resolving dependencies where the implementing class is not available
-- Support for cyclic dependencies
+- Supports dependency resolution without prior registration of the type with the container
+- Supports resolution of the same object based on object lifetime policy, persistent, transient or ephemeral
+- Supports both reference and value types
+- Supports resolution of multiple variants of the same type differentiated by key
+- Supports registration of interface types to allow for resolving dependencies where the implementing class is not directly available
+- Supports resolution of interdependant classes with cyclic dependencies
 
 # Trade-offs and limitations
 
 - Registrationless resolution requires visibility of the exact type being resolved
-- Resolving via an interface works around the above issue but requires registration, this registration is not enforced at compile time, meaning it can fail at runtime if the registration was ommitted
+- Resolving via an interface works around the need for visibility of the type being resolved at the expense of requiring registration, this registration is not enforced at compile time, meaning it can fail at runtime if the registration was ommitted
 - Coupling between dependency injection framework and injected types through protocol conformance
 
 # Usage examples
