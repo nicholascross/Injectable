@@ -56,10 +56,6 @@ private class Moose: Animal, Injectable {
     static func create(inContainer container: Container, variant: String?) -> Moose {
         return Moose(genome: container.resolve(), antlers: 2)
     }
-
-    static func didCreate(object: Moose, inContainer container: Container) {
-
-    }
 }
 
 private class Plant: Injectable {
@@ -67,10 +63,6 @@ private class Plant: Injectable {
 
     static func create(inContainer container: Container, variant: String?) -> Plant {
         return Plant(genome: container.resolve())
-    }
-
-    static func didCreate(object: Plant, inContainer container: Container) {
-
     }
 
     init(genome: Genome) {
@@ -83,10 +75,6 @@ private class Genome: Injectable {
 
     static func create(inContainer container: Container, variant: String?) -> Genome {
         return Genome(data: Data())
-    }
-
-    static func didCreate(object: Genome, inContainer container: Container) {
-
     }
 
     init(data: Data) {
