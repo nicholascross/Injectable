@@ -2,6 +2,7 @@
 
 ![build status](https://travis-ci.org/nicholascross/Injectable.svg?branch=master)
 ![code coverage](https://img.shields.io/codecov/c/github/nicholascross/Injectable.svg)
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/cb56af42eff64357a75e1df718b75058)](https://app.codacy.com/app/nicholascross/Injectable?utm_source=github.com&utm_medium=referral&utm_content=nicholascross/Injectable&utm_campaign=Badge_Grade_Settings)
 [![carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage) 
 [![CocoaPods compatible](https://img.shields.io/cocoapods/v/InjectableSwift.svg)](https://cocoapods.org/pods/InjectableSwift) 
 [![GitHub release](https://img.shields.io/github/release/nicholascross/Injectable.svg)](https://github.com/nicholascross/Injectable/releases) 
