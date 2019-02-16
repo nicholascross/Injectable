@@ -5,7 +5,7 @@ osx_image: xcode10.1
 script:
   - xcodebuild -enableCodeCoverage YES -scheme Injectable-iOS -project Injectable.xcodeproj -sdk iphonesimulator -destination 'platform=iOS Simulator,name=iPhone XR,OS=12.1' build test GCC_INSTRUMENT_PROGRAM_FLOW_ARCS=YES GCC_GENERATE_TEST_COVERAGE_FILES=YES
   - xcodebuild -scheme Injectable-iOS -project Injectable.xcodeproj -sdk iphonesimulator -destination 'platform=iOS Simulator,name=iPhone XR,OS=12.1' build test
-  - xcodebuild -scheme Injectable-tvOS -project Injectable.xcodeproj -sdk appletvsimulator -destination 'platform=tvOS Simulator,name=Apple TV 1080p,OS=12.1' build test
+  - xcodebuild -scheme Injectable-tvOS -project Injectable.xcodeproj -sdk appletvsimulator -destination 'platform=tvOS Simulator,name=Apple TV 4K (at 1080p),OS=12.1' build test
   - xcodebuild -scheme Injectable-macOS -project Injectable.xcodeproj build test
   - xcodebuild -scheme Injectable-watchOS -project Injectable.xcodeproj build
   - gem install cocoapods
