@@ -1,5 +1,13 @@
 # Injectable
 
+![build status](https://travis-ci.org/nicholascross/Injectable.svg?branch=master)
+![code coverage](https://img.shields.io/codecov/c/github/nicholascross/Injectable.svg)
+[![carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage) 
+[![CocoaPods compatible](https://img.shields.io/cocoapods/v/InjectableSwift.svg)](https://cocoapods.org/pods/InjectableSwift) 
+[![GitHub release](https://img.shields.io/github/release/nicholascross/Injectable.svg)](https://github.com/nicholascross/Injectable/releases) 
+![Swift 4.2.x](https://img.shields.io/badge/Swift-4.2.x-orange.svg) 
+![platforms](https://img.shields.io/badge/platforms-iOS%20%7C%20OS%20X%20%7C%20watchOS%20%7C%20tvOS%20-lightgrey.svg)
+
 A Swift dependency injection container which minimises the need for centralised registration
 
 # Features
