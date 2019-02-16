@@ -3,11 +3,11 @@ os:
 language: swift
 osx_image: xcode10.1
 script:
-  - xcodebuild -enableCodeCoverage YES -scheme Injectable-iOS -project Injectable.xcodeproj -sdk iphonesimulator -destination 'platform=iOS Simulator,name=iPhone XR,OS=12.1' build test GCC_INSTRUMENT_PROGRAM_FLOW_ARCS=YES GCC_GENERATE_TEST_COVERAGE_FILES=YES CODE_SIGNING_REQUIRED=NO
-  - xcodebuild -scheme Injectable-iOS -project Injectable.xcodeproj -sdk iphonesimulator -destination 'platform=iOS Simulator,name=iPhone XR,OS=12.1' build test CODE_SIGNING_REQUIRED=NO
-  - xcodebuild -scheme Injectable-tvOS -project Injectable.xcodeproj -sdk appletvsimulator -destination 'platform=tvOS Simulator,name=Apple TV 4K (at 1080p),OS=12.1' build test CODE_SIGNING_REQUIRED=NO
-  - xcodebuild -scheme Injectable-macOS -project Injectable.xcodeproj build test CODE_SIGNING_REQUIRED=NO
-  - xcodebuild -scheme Injectable-watchOS -project Injectable.xcodeproj build CODE_SIGNING_REQUIRED=NO
+  - xcodebuild -enableCodeCoverage YES -scheme Injectable-iOS -project Injectable.xcodeproj -sdk iphonesimulator -destination 'platform=iOS Simulator,name=iPhone XR,OS=12.1' build test GCC_INSTRUMENT_PROGRAM_FLOW_ARCS=YES GCC_GENERATE_TEST_COVERAGE_FILES=YES CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO
+  - xcodebuild -scheme Injectable-iOS -project Injectable.xcodeproj -sdk iphonesimulator -destination 'platform=iOS Simulator,name=iPhone XR,OS=12.1' build test CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO
+  - xcodebuild -scheme Injectable-tvOS -project Injectable.xcodeproj -sdk appletvsimulator -destination 'platform=tvOS Simulator,name=Apple TV 4K (at 1080p),OS=12.1' build test CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO
+  - xcodebuild -scheme Injectable-macOS -project Injectable.xcodeproj build test CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO
+  - xcodebuild -scheme Injectable-watchOS -project Injectable.xcodeproj build CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO
   - gem install cocoapods
   - pod repo update --silent
   - pod lib lint --allow-warnings
