@@ -24,6 +24,48 @@
 		E151AF39220E8622002F6E70 /* ReadMeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E151AF38220E8622002F6E70 /* ReadMeTests.swift */; };
 		E151AF3B220E8BFC002F6E70 /* TypeVariantTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E151AF3A220E8BFC002F6E70 /* TypeVariantTests.swift */; };
 		E151AF3D220E9197002F6E70 /* WeakBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = E151AF3C220E9197002F6E70 /* WeakBox.swift */; };
+		E1AB1F2C2217815E006E1B60 /* Injectable_iOS.h in Headers */ = {isa = PBXBuildFile; fileRef = E1AB1F2A2217815E006E1B60 /* Injectable_iOS.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E1AB1F3922178185006E1B60 /* Injectable.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E1AB1F282217815E006E1B60 /* Injectable.framework */; };
+		E1AB1F3F22178233006E1B60 /* CycleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E13831BA21F2E5AF0081F481 /* CycleTests.swift */; };
+		E1AB1F4022178236006E1B60 /* EphemeralLifetimeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E13831BC21F2F1910081F481 /* EphemeralLifetimeTests.swift */; };
+		E1AB1F4122178239006E1B60 /* InjectableTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E13831A621F2C3A40081F481 /* InjectableTests.swift */; };
+		E1AB1F422217823C006E1B60 /* InterfaceResolutionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0195EAAE21F5E9A40008A143 /* InterfaceResolutionTests.swift */; };
+		E1AB1F432217823F006E1B60 /* PersistentLifetimeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E13831C021F2F2070081F481 /* PersistentLifetimeTests.swift */; };
+		E1AB1F442217823F006E1B60 /* TransientLifetimeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E13831BE21F2F1EE0081F481 /* TransientLifetimeTests.swift */; };
+		E1AB1F452217823F006E1B60 /* ReadMeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E151AF38220E8622002F6E70 /* ReadMeTests.swift */; };
+		E1AB1F462217823F006E1B60 /* TypeVariantTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E151AF3A220E8BFC002F6E70 /* TypeVariantTests.swift */; };
+		E1AB1F472217824E006E1B60 /* RecursiveLock.swift in Sources */ = {isa = PBXBuildFile; fileRef = E13831C221F3337A0081F481 /* RecursiveLock.swift */; };
+		E1AB1F482217824E006E1B60 /* WeakBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = E151AF3C220E9197002F6E70 /* WeakBox.swift */; };
+		E1AB1F4922178251006E1B60 /* LifetimeProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = E13831B621F2E27C0081F481 /* LifetimeProviding.swift */; };
+		E1AB1F4A22178254006E1B60 /* Container.swift in Sources */ = {isa = PBXBuildFile; fileRef = E13831B421F2E2230081F481 /* Container.swift */; };
+		E1AB1F4B22178254006E1B60 /* DependencyContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E13831B821F2E2960081F481 /* DependencyContainer.swift */; };
+		E1AB1F4E22178254006E1B60 /* InjectableObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = E13831B221F2C3BA0081F481 /* InjectableObject.swift */; };
+		E1AB1F4F22178254006E1B60 /* Injectable.swift in Sources */ = {isa = PBXBuildFile; fileRef = E131C0B721FD90AA00B0A2E7 /* Injectable.swift */; };
+		E1AB1F66221786EB006E1B60 /* Injectable_watchOS.h in Headers */ = {isa = PBXBuildFile; fileRef = E1AB1F64221786EB006E1B60 /* Injectable_watchOS.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E1AB1F6B22178951006E1B60 /* InjectableObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = E13831B221F2C3BA0081F481 /* InjectableObject.swift */; };
+		E1AB1F6C22178951006E1B60 /* Injectable.swift in Sources */ = {isa = PBXBuildFile; fileRef = E131C0B721FD90AA00B0A2E7 /* Injectable.swift */; };
+		E1AB1F6D22178959006E1B60 /* Container.swift in Sources */ = {isa = PBXBuildFile; fileRef = E13831B421F2E2230081F481 /* Container.swift */; };
+		E1AB1F6E22178959006E1B60 /* DependencyContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E13831B821F2E2960081F481 /* DependencyContainer.swift */; };
+		E1AB1F6F22178969006E1B60 /* RecursiveLock.swift in Sources */ = {isa = PBXBuildFile; fileRef = E13831C221F3337A0081F481 /* RecursiveLock.swift */; };
+		E1AB1F7022178969006E1B60 /* WeakBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = E151AF3C220E9197002F6E70 /* WeakBox.swift */; };
+		E1AB1F712217896C006E1B60 /* LifetimeProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = E13831B621F2E27C0081F481 /* LifetimeProviding.swift */; };
+		E1AB1F7B22178A6A006E1B60 /* Injectable_tvOS.h in Headers */ = {isa = PBXBuildFile; fileRef = E1AB1F7922178A6A006E1B60 /* Injectable_tvOS.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E1AB1F8822178A81006E1B60 /* Injectable.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E1AB1F7722178A6A006E1B60 /* Injectable.framework */; };
+		E1AB1F8E22178A8C006E1B60 /* CycleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E13831BA21F2E5AF0081F481 /* CycleTests.swift */; };
+		E1AB1F8F22178A8C006E1B60 /* EphemeralLifetimeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E13831BC21F2F1910081F481 /* EphemeralLifetimeTests.swift */; };
+		E1AB1F9022178A90006E1B60 /* InjectableTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E13831A621F2C3A40081F481 /* InjectableTests.swift */; };
+		E1AB1F9122178A90006E1B60 /* InterfaceResolutionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0195EAAE21F5E9A40008A143 /* InterfaceResolutionTests.swift */; };
+		E1AB1F9222178A90006E1B60 /* PersistentLifetimeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E13831C021F2F2070081F481 /* PersistentLifetimeTests.swift */; };
+		E1AB1F9322178A90006E1B60 /* TransientLifetimeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E13831BE21F2F1EE0081F481 /* TransientLifetimeTests.swift */; };
+		E1AB1F9422178A90006E1B60 /* ReadMeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E151AF38220E8622002F6E70 /* ReadMeTests.swift */; };
+		E1AB1F9522178A90006E1B60 /* TypeVariantTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E151AF3A220E8BFC002F6E70 /* TypeVariantTests.swift */; };
+		E1AB1F9622178AD1006E1B60 /* Container.swift in Sources */ = {isa = PBXBuildFile; fileRef = E13831B421F2E2230081F481 /* Container.swift */; };
+		E1AB1F9722178AD1006E1B60 /* DependencyContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E13831B821F2E2960081F481 /* DependencyContainer.swift */; };
+		E1AB1F9822178AD8006E1B60 /* InjectableObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = E13831B221F2C3BA0081F481 /* InjectableObject.swift */; };
+		E1AB1F9922178AD8006E1B60 /* Injectable.swift in Sources */ = {isa = PBXBuildFile; fileRef = E131C0B721FD90AA00B0A2E7 /* Injectable.swift */; };
+		E1AB1F9A22178ADC006E1B60 /* RecursiveLock.swift in Sources */ = {isa = PBXBuildFile; fileRef = E13831C221F3337A0081F481 /* RecursiveLock.swift */; };
+		E1AB1F9B22178ADC006E1B60 /* WeakBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = E151AF3C220E9197002F6E70 /* WeakBox.swift */; };
+		E1AB1F9C22178ADE006E1B60 /* LifetimeProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = E13831B621F2E27C0081F481 /* LifetimeProviding.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,6 +76,20 @@
 			remoteGlobalIDString = E138319721F2C3A40081F481;
 			remoteInfo = Injectable;
 		};
+		E1AB1F3A22178185006E1B60 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E138318F21F2C3A40081F481 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = E1AB1F272217815E006E1B60;
+			remoteInfo = "Injectable-iOS";
+		};
+		E1AB1F8922178A81006E1B60 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E138318F21F2C3A40081F481 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = E1AB1F7622178A6A006E1B60;
+			remoteInfo = "Injectable-tvOS";
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
@@ -42,7 +98,7 @@
 		E138319821F2C3A40081F481 /* Injectable.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Injectable.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E138319B21F2C3A40081F481 /* Injectable.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Injectable.h; sourceTree = "<group>"; };
 		E138319C21F2C3A40081F481 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		E13831A121F2C3A40081F481 /* InjectableTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = InjectableTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		E13831A121F2C3A40081F481 /* InjectableTests-macOS.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "InjectableTests-macOS.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E13831A621F2C3A40081F481 /* InjectableTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InjectableTests.swift; sourceTree = "<group>"; };
 		E13831A821F2C3A40081F481 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E13831B221F2C3BA0081F481 /* InjectableObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InjectableObject.swift; sourceTree = "<group>"; };
@@ -57,6 +113,17 @@
 		E151AF38220E8622002F6E70 /* ReadMeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadMeTests.swift; sourceTree = "<group>"; };
 		E151AF3A220E8BFC002F6E70 /* TypeVariantTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeVariantTests.swift; sourceTree = "<group>"; };
 		E151AF3C220E9197002F6E70 /* WeakBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeakBox.swift; sourceTree = "<group>"; };
+		E1AB1F282217815E006E1B60 /* Injectable.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Injectable.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E1AB1F2A2217815E006E1B60 /* Injectable_iOS.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Injectable_iOS.h; sourceTree = "<group>"; };
+		E1AB1F2B2217815E006E1B60 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E1AB1F3422178185006E1B60 /* InjectableTests-iOS.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "InjectableTests-iOS.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		E1AB1F62221786EB006E1B60 /* Injectable.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Injectable.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E1AB1F64221786EB006E1B60 /* Injectable_watchOS.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Injectable_watchOS.h; sourceTree = "<group>"; };
+		E1AB1F65221786EB006E1B60 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E1AB1F7722178A6A006E1B60 /* Injectable.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Injectable.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E1AB1F7922178A6A006E1B60 /* Injectable_tvOS.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Injectable_tvOS.h; sourceTree = "<group>"; };
+		E1AB1F7A22178A6A006E1B60 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E1AB1F8322178A81006E1B60 /* InjectableTests-tvOS.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "InjectableTests-tvOS.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,6 +139,43 @@
 			buildActionMask = 2147483647;
 			files = (
 				E13831A221F2C3A40081F481 /* Injectable.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E1AB1F252217815E006E1B60 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E1AB1F3122178185006E1B60 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E1AB1F3922178185006E1B60 /* Injectable.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E1AB1F5F221786EB006E1B60 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E1AB1F7422178A6A006E1B60 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E1AB1F8022178A81006E1B60 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E1AB1F8822178A81006E1B60 /* Injectable.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -92,6 +196,9 @@
 			children = (
 				E138319A21F2C3A40081F481 /* Injectable */,
 				E13831A521F2C3A40081F481 /* InjectableTests */,
+				E1AB1F292217815E006E1B60 /* Injectable-iOS */,
+				E1AB1F63221786EB006E1B60 /* Injectable-watchOS */,
+				E1AB1F7822178A6A006E1B60 /* Injectable-tvOS */,
 				E138319921F2C3A40081F481 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -100,7 +207,12 @@
 			isa = PBXGroup;
 			children = (
 				E138319821F2C3A40081F481 /* Injectable.framework */,
-				E13831A121F2C3A40081F481 /* InjectableTests.xctest */,
+				E13831A121F2C3A40081F481 /* InjectableTests-macOS.xctest */,
+				E1AB1F282217815E006E1B60 /* Injectable.framework */,
+				E1AB1F3422178185006E1B60 /* InjectableTests-iOS.xctest */,
+				E1AB1F62221786EB006E1B60 /* Injectable.framework */,
+				E1AB1F7722178A6A006E1B60 /* Injectable.framework */,
+				E1AB1F8322178A81006E1B60 /* InjectableTests-tvOS.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -136,6 +248,33 @@
 			path = InjectableTests;
 			sourceTree = "<group>";
 		};
+		E1AB1F292217815E006E1B60 /* Injectable-iOS */ = {
+			isa = PBXGroup;
+			children = (
+				E1AB1F2A2217815E006E1B60 /* Injectable_iOS.h */,
+				E1AB1F2B2217815E006E1B60 /* Info.plist */,
+			);
+			path = "Injectable-iOS";
+			sourceTree = "<group>";
+		};
+		E1AB1F63221786EB006E1B60 /* Injectable-watchOS */ = {
+			isa = PBXGroup;
+			children = (
+				E1AB1F64221786EB006E1B60 /* Injectable_watchOS.h */,
+				E1AB1F65221786EB006E1B60 /* Info.plist */,
+			);
+			path = "Injectable-watchOS";
+			sourceTree = "<group>";
+		};
+		E1AB1F7822178A6A006E1B60 /* Injectable-tvOS */ = {
+			isa = PBXGroup;
+			children = (
+				E1AB1F7922178A6A006E1B60 /* Injectable_tvOS.h */,
+				E1AB1F7A22178A6A006E1B60 /* Info.plist */,
+			);
+			path = "Injectable-tvOS";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -147,12 +286,36 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		E1AB1F232217815E006E1B60 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E1AB1F2C2217815E006E1B60 /* Injectable_iOS.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E1AB1F5D221786EB006E1B60 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E1AB1F66221786EB006E1B60 /* Injectable_watchOS.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E1AB1F7222178A6A006E1B60 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E1AB1F7B22178A6A006E1B60 /* Injectable_tvOS.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		E138319721F2C3A40081F481 /* Injectable */ = {
+		E138319721F2C3A40081F481 /* Injectable-macOS */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = E13831AC21F2C3A40081F481 /* Build configuration list for PBXNativeTarget "Injectable" */;
+			buildConfigurationList = E13831AC21F2C3A40081F481 /* Build configuration list for PBXNativeTarget "Injectable-macOS" */;
 			buildPhases = (
 				E138319321F2C3A40081F481 /* Headers */,
 				E138319421F2C3A40081F481 /* Sources */,
@@ -163,14 +326,14 @@
 			);
 			dependencies = (
 			);
-			name = Injectable;
+			name = "Injectable-macOS";
 			productName = Injectable;
 			productReference = E138319821F2C3A40081F481 /* Injectable.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		E13831A021F2C3A40081F481 /* InjectableTests */ = {
+		E13831A021F2C3A40081F481 /* InjectableTests-macOS */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = E13831AF21F2C3A40081F481 /* Build configuration list for PBXNativeTarget "InjectableTests" */;
+			buildConfigurationList = E13831AF21F2C3A40081F481 /* Build configuration list for PBXNativeTarget "InjectableTests-macOS" */;
 			buildPhases = (
 				E138319D21F2C3A40081F481 /* Sources */,
 				E138319E21F2C3A40081F481 /* Frameworks */,
@@ -181,9 +344,99 @@
 			dependencies = (
 				E13831A421F2C3A40081F481 /* PBXTargetDependency */,
 			);
-			name = InjectableTests;
+			name = "InjectableTests-macOS";
 			productName = InjectableTests;
-			productReference = E13831A121F2C3A40081F481 /* InjectableTests.xctest */;
+			productReference = E13831A121F2C3A40081F481 /* InjectableTests-macOS.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		E1AB1F272217815E006E1B60 /* Injectable-iOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E1AB1F2D2217815E006E1B60 /* Build configuration list for PBXNativeTarget "Injectable-iOS" */;
+			buildPhases = (
+				E1AB1F232217815E006E1B60 /* Headers */,
+				E1AB1F242217815E006E1B60 /* Sources */,
+				E1AB1F252217815E006E1B60 /* Frameworks */,
+				E1AB1F262217815E006E1B60 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Injectable-iOS";
+			productName = "Injectable-iOS";
+			productReference = E1AB1F282217815E006E1B60 /* Injectable.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		E1AB1F3322178185006E1B60 /* InjectableTests-iOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E1AB1F3C22178185006E1B60 /* Build configuration list for PBXNativeTarget "InjectableTests-iOS" */;
+			buildPhases = (
+				E1AB1F3022178185006E1B60 /* Sources */,
+				E1AB1F3122178185006E1B60 /* Frameworks */,
+				E1AB1F3222178185006E1B60 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				E1AB1F3B22178185006E1B60 /* PBXTargetDependency */,
+			);
+			name = "InjectableTests-iOS";
+			productName = "InjectableTests-iOS";
+			productReference = E1AB1F3422178185006E1B60 /* InjectableTests-iOS.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		E1AB1F61221786EB006E1B60 /* Injectable-watchOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E1AB1F69221786EB006E1B60 /* Build configuration list for PBXNativeTarget "Injectable-watchOS" */;
+			buildPhases = (
+				E1AB1F5D221786EB006E1B60 /* Headers */,
+				E1AB1F5E221786EB006E1B60 /* Sources */,
+				E1AB1F5F221786EB006E1B60 /* Frameworks */,
+				E1AB1F60221786EB006E1B60 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Injectable-watchOS";
+			productName = "Injectable-watchOS";
+			productReference = E1AB1F62221786EB006E1B60 /* Injectable.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		E1AB1F7622178A6A006E1B60 /* Injectable-tvOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E1AB1F7C22178A6A006E1B60 /* Build configuration list for PBXNativeTarget "Injectable-tvOS" */;
+			buildPhases = (
+				E1AB1F7222178A6A006E1B60 /* Headers */,
+				E1AB1F7322178A6A006E1B60 /* Sources */,
+				E1AB1F7422178A6A006E1B60 /* Frameworks */,
+				E1AB1F7522178A6A006E1B60 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Injectable-tvOS";
+			productName = "Injectable-tvOS";
+			productReference = E1AB1F7722178A6A006E1B60 /* Injectable.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		E1AB1F8222178A81006E1B60 /* InjectableTests-tvOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E1AB1F8B22178A81006E1B60 /* Build configuration list for PBXNativeTarget "InjectableTests-tvOS" */;
+			buildPhases = (
+				E1AB1F7F22178A81006E1B60 /* Sources */,
+				E1AB1F8022178A81006E1B60 /* Frameworks */,
+				E1AB1F8122178A81006E1B60 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				E1AB1F8A22178A81006E1B60 /* PBXTargetDependency */,
+			);
+			name = "InjectableTests-tvOS";
+			productName = "InjectableTests-tvOS";
+			productReference = E1AB1F8322178A81006E1B60 /* InjectableTests-tvOS.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -203,6 +456,21 @@
 					E13831A021F2C3A40081F481 = {
 						CreatedOnToolsVersion = 10.1;
 					};
+					E1AB1F272217815E006E1B60 = {
+						CreatedOnToolsVersion = 10.1;
+					};
+					E1AB1F3322178185006E1B60 = {
+						CreatedOnToolsVersion = 10.1;
+					};
+					E1AB1F61221786EB006E1B60 = {
+						CreatedOnToolsVersion = 10.1;
+					};
+					E1AB1F7622178A6A006E1B60 = {
+						CreatedOnToolsVersion = 10.1;
+					};
+					E1AB1F8222178A81006E1B60 = {
+						CreatedOnToolsVersion = 10.1;
+					};
 				};
 			};
 			buildConfigurationList = E138319221F2C3A40081F481 /* Build configuration list for PBXProject "Injectable" */;
@@ -217,8 +485,13 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				E138319721F2C3A40081F481 /* Injectable */,
-				E13831A021F2C3A40081F481 /* InjectableTests */,
+				E138319721F2C3A40081F481 /* Injectable-macOS */,
+				E13831A021F2C3A40081F481 /* InjectableTests-macOS */,
+				E1AB1F272217815E006E1B60 /* Injectable-iOS */,
+				E1AB1F3322178185006E1B60 /* InjectableTests-iOS */,
+				E1AB1F61221786EB006E1B60 /* Injectable-watchOS */,
+				E1AB1F7622178A6A006E1B60 /* Injectable-tvOS */,
+				E1AB1F8222178A81006E1B60 /* InjectableTests-tvOS */,
 			);
 		};
 /* End PBXProject section */
@@ -232,6 +505,41 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		E138319F21F2C3A40081F481 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E1AB1F262217815E006E1B60 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E1AB1F3222178185006E1B60 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E1AB1F60221786EB006E1B60 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E1AB1F7522178A6A006E1B60 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E1AB1F8122178A81006E1B60 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -270,13 +578,95 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		E1AB1F242217815E006E1B60 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E1AB1F472217824E006E1B60 /* RecursiveLock.swift in Sources */,
+				E1AB1F4B22178254006E1B60 /* DependencyContainer.swift in Sources */,
+				E1AB1F4A22178254006E1B60 /* Container.swift in Sources */,
+				E1AB1F4E22178254006E1B60 /* InjectableObject.swift in Sources */,
+				E1AB1F482217824E006E1B60 /* WeakBox.swift in Sources */,
+				E1AB1F4922178251006E1B60 /* LifetimeProviding.swift in Sources */,
+				E1AB1F4F22178254006E1B60 /* Injectable.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E1AB1F3022178185006E1B60 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E1AB1F4122178239006E1B60 /* InjectableTests.swift in Sources */,
+				E1AB1F432217823F006E1B60 /* PersistentLifetimeTests.swift in Sources */,
+				E1AB1F3F22178233006E1B60 /* CycleTests.swift in Sources */,
+				E1AB1F4022178236006E1B60 /* EphemeralLifetimeTests.swift in Sources */,
+				E1AB1F462217823F006E1B60 /* TypeVariantTests.swift in Sources */,
+				E1AB1F452217823F006E1B60 /* ReadMeTests.swift in Sources */,
+				E1AB1F422217823C006E1B60 /* InterfaceResolutionTests.swift in Sources */,
+				E1AB1F442217823F006E1B60 /* TransientLifetimeTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E1AB1F5E221786EB006E1B60 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E1AB1F6C22178951006E1B60 /* Injectable.swift in Sources */,
+				E1AB1F6D22178959006E1B60 /* Container.swift in Sources */,
+				E1AB1F712217896C006E1B60 /* LifetimeProviding.swift in Sources */,
+				E1AB1F6E22178959006E1B60 /* DependencyContainer.swift in Sources */,
+				E1AB1F6B22178951006E1B60 /* InjectableObject.swift in Sources */,
+				E1AB1F6F22178969006E1B60 /* RecursiveLock.swift in Sources */,
+				E1AB1F7022178969006E1B60 /* WeakBox.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E1AB1F7322178A6A006E1B60 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E1AB1F9922178AD8006E1B60 /* Injectable.swift in Sources */,
+				E1AB1F9822178AD8006E1B60 /* InjectableObject.swift in Sources */,
+				E1AB1F9C22178ADE006E1B60 /* LifetimeProviding.swift in Sources */,
+				E1AB1F9722178AD1006E1B60 /* DependencyContainer.swift in Sources */,
+				E1AB1F9622178AD1006E1B60 /* Container.swift in Sources */,
+				E1AB1F9A22178ADC006E1B60 /* RecursiveLock.swift in Sources */,
+				E1AB1F9B22178ADC006E1B60 /* WeakBox.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E1AB1F7F22178A81006E1B60 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E1AB1F9022178A90006E1B60 /* InjectableTests.swift in Sources */,
+				E1AB1F9222178A90006E1B60 /* PersistentLifetimeTests.swift in Sources */,
+				E1AB1F8E22178A8C006E1B60 /* CycleTests.swift in Sources */,
+				E1AB1F8F22178A8C006E1B60 /* EphemeralLifetimeTests.swift in Sources */,
+				E1AB1F9522178A90006E1B60 /* TypeVariantTests.swift in Sources */,
+				E1AB1F9422178A90006E1B60 /* ReadMeTests.swift in Sources */,
+				E1AB1F9122178A90006E1B60 /* InterfaceResolutionTests.swift in Sources */,
+				E1AB1F9322178A90006E1B60 /* TransientLifetimeTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
 		E13831A421F2C3A40081F481 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = E138319721F2C3A40081F481 /* Injectable */;
+			target = E138319721F2C3A40081F481 /* Injectable-macOS */;
 			targetProxy = E13831A321F2C3A40081F481 /* PBXContainerItemProxy */;
+		};
+		E1AB1F3B22178185006E1B60 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = E1AB1F272217815E006E1B60 /* Injectable-iOS */;
+			targetProxy = E1AB1F3A22178185006E1B60 /* PBXContainerItemProxy */;
+		};
+		E1AB1F8A22178A81006E1B60 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = E1AB1F7622178A6A006E1B60 /* Injectable-tvOS */;
+			targetProxy = E1AB1F8922178A81006E1B60 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -422,8 +812,9 @@
 					"@executable_path/../Frameworks",
 					"@loader_path/Frameworks",
 				);
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				PRODUCT_BUNDLE_IDENTIFIER = com.nacross.Injectable;
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				PRODUCT_NAME = Injectable;
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -451,8 +842,9 @@
 					"@executable_path/../Frameworks",
 					"@loader_path/Frameworks",
 				);
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				PRODUCT_BUNDLE_IDENTIFIER = com.nacross.Injectable;
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				PRODUCT_NAME = Injectable;
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 4.2;
@@ -499,6 +891,261 @@
 			};
 			name = Release;
 		};
+		E1AB1F2E2217815E006E1B60 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = BRM53H4XE2;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Injectable-iOS/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.nacross.Injectable-iOS";
+				PRODUCT_NAME = Injectable;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		E1AB1F2F2217815E006E1B60 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = BRM53H4XE2;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Injectable-iOS/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.nacross.Injectable-iOS";
+				PRODUCT_NAME = Injectable;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		E1AB1F3D22178185006E1B60 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = BRM53H4XE2;
+				INFOPLIST_FILE = InjectableTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.nacross.InjectableTests-iOS";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		E1AB1F3E22178185006E1B60 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = BRM53H4XE2;
+				INFOPLIST_FILE = InjectableTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.nacross.InjectableTests-iOS";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		E1AB1F67221786EB006E1B60 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
+				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_STYLE = Automatic;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = BRM53H4XE2;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Injectable-watchOS/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.nacross.Injectable-watchOS";
+				PRODUCT_NAME = Injectable;
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 3.2;
+			};
+			name = Debug;
+		};
+		E1AB1F68221786EB006E1B60 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
+				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_STYLE = Automatic;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = BRM53H4XE2;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Injectable-watchOS/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.nacross.Injectable-watchOS";
+				PRODUCT_NAME = Injectable;
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = 4;
+				VALIDATE_PRODUCT = YES;
+				WATCHOS_DEPLOYMENT_TARGET = 3.2;
+			};
+			name = Release;
+		};
+		E1AB1F7D22178A6A006E1B60 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_STYLE = Automatic;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = BRM53H4XE2;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Injectable-tvOS/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.nacross.Injectable-tvOS";
+				PRODUCT_NAME = Injectable;
+				SDKROOT = appletvos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = 3;
+				TVOS_DEPLOYMENT_TARGET = 11.0;
+			};
+			name = Debug;
+		};
+		E1AB1F7E22178A6A006E1B60 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_STYLE = Automatic;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = BRM53H4XE2;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Injectable-tvOS/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.nacross.Injectable-tvOS";
+				PRODUCT_NAME = Injectable;
+				SDKROOT = appletvos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = 3;
+				TVOS_DEPLOYMENT_TARGET = 11.0;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		E1AB1F8C22178A81006E1B60 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = BRM53H4XE2;
+				INFOPLIST_FILE = InjectableTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.nacross.InjectableTests-tvOS";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = appletvos;
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = 3;
+				TVOS_DEPLOYMENT_TARGET = 12.1;
+			};
+			name = Debug;
+		};
+		E1AB1F8D22178A81006E1B60 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = BRM53H4XE2;
+				INFOPLIST_FILE = InjectableTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.nacross.InjectableTests-tvOS";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = appletvos;
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = 3;
+				TVOS_DEPLOYMENT_TARGET = 12.1;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -511,7 +1158,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		E13831AC21F2C3A40081F481 /* Build configuration list for PBXNativeTarget "Injectable" */ = {
+		E13831AC21F2C3A40081F481 /* Build configuration list for PBXNativeTarget "Injectable-macOS" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				E13831AD21F2C3A40081F481 /* Debug */,
@@ -520,11 +1167,56 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		E13831AF21F2C3A40081F481 /* Build configuration list for PBXNativeTarget "InjectableTests" */ = {
+		E13831AF21F2C3A40081F481 /* Build configuration list for PBXNativeTarget "InjectableTests-macOS" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				E13831B021F2C3A40081F481 /* Debug */,
 				E13831B121F2C3A40081F481 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E1AB1F2D2217815E006E1B60 /* Build configuration list for PBXNativeTarget "Injectable-iOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E1AB1F2E2217815E006E1B60 /* Debug */,
+				E1AB1F2F2217815E006E1B60 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E1AB1F3C22178185006E1B60 /* Build configuration list for PBXNativeTarget "InjectableTests-iOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E1AB1F3D22178185006E1B60 /* Debug */,
+				E1AB1F3E22178185006E1B60 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E1AB1F69221786EB006E1B60 /* Build configuration list for PBXNativeTarget "Injectable-watchOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E1AB1F67221786EB006E1B60 /* Debug */,
+				E1AB1F68221786EB006E1B60 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E1AB1F7C22178A6A006E1B60 /* Build configuration list for PBXNativeTarget "Injectable-tvOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E1AB1F7D22178A6A006E1B60 /* Debug */,
+				E1AB1F7E22178A6A006E1B60 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E1AB1F8B22178A81006E1B60 /* Build configuration list for PBXNativeTarget "InjectableTests-tvOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E1AB1F8C22178A81006E1B60 /* Debug */,
+				E1AB1F8D22178A81006E1B60 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

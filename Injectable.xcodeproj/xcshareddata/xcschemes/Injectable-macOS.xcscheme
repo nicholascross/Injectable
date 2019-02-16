@@ -16,7 +16,7 @@
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "E138319721F2C3A40081F481"
                BuildableName = "Injectable.framework"
-               BlueprintName = "Injectable"
+               BlueprintName = "Injectable-macOS"
                ReferencedContainer = "container:Injectable.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -34,7 +34,7 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "E138319721F2C3A40081F481"
             BuildableName = "Injectable.framework"
-            BlueprintName = "Injectable"
+            BlueprintName = "Injectable-macOS"
             ReferencedContainer = "container:Injectable.xcodeproj">
          </BuildableReference>
       </CodeCoverageTargets>
@@ -44,8 +44,8 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "E13831A021F2C3A40081F481"
-               BuildableName = "InjectableTests.xctest"
-               BlueprintName = "InjectableTests"
+               BuildableName = "InjectableTests-macOS.xctest"
+               BlueprintName = "InjectableTests-macOS"
                ReferencedContainer = "container:Injectable.xcodeproj">
             </BuildableReference>
          </TestableReference>
@@ -55,7 +55,7 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "E138319721F2C3A40081F481"
             BuildableName = "Injectable.framework"
-            BlueprintName = "Injectable"
+            BlueprintName = "Injectable-macOS"
             ReferencedContainer = "container:Injectable.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -77,7 +77,7 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "E138319721F2C3A40081F481"
             BuildableName = "Injectable.framework"
-            BlueprintName = "Injectable"
+            BlueprintName = "Injectable-macOS"
             ReferencedContainer = "container:Injectable.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -95,7 +95,7 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "E138319721F2C3A40081F481"
             BuildableName = "Injectable.framework"
-            BlueprintName = "Injectable"
+            BlueprintName = "Injectable-macOS"
             ReferencedContainer = "container:Injectable.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
