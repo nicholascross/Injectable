@@ -74,5 +74,18 @@ class ReadMeTests: XCTestCase {
     }
 }
 ```
+# Installation
 
+## Cocoapods
 
+Add the following to you pod file
+```
+pod 'InjectableSwift'
+```
+
+## Carthage
+
+Add the following to your Cartfile
+```
+github 'nicholascross/Injectable'
+```
