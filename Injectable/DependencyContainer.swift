@@ -9,10 +9,21 @@
 import Foundation
 
 public class DependencyContainer: Container {
-    private var transientObjects: [String: AnyObject] = [:]
-    private var persistentObjects: [String: AnyObject] = [:]
-    private let lock: RecursiveLock = .init()
-    private var registeredResolvers: [String: (Container) -> Any] = [:]
+    private var transientObjects: [String: AnyObject]
+    private var persistentObjects: [String: AnyObject]
+    private let lock: RecursiveLock
+    private var registeredResolvers: [String: (Container) -> Any]
+
+    public convenience init() {
+        self.init(transientObjects: [:], persistentObjects: [:], lock: .init(), registeredResolvers: [:])
+    }
+
+    init(transientObjects: [String: AnyObject], persistentObjects: [String: AnyObject], lock: RecursiveLock, registeredResolvers: [String: (Container) -> Any]) {
+        self.transientObjects = transientObjects
+        self.persistentObjects = persistentObjects
+        self.lock = lock
+        self.registeredResolvers = registeredResolvers
+    }
 
     public func resolve<Object: Injectable>(variant: String?) -> Object {
         switch Object.lifetime {
