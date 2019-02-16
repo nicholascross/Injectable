@@ -87,5 +87,5 @@ pod 'InjectableSwift'
 
 Add the following to your Cartfile
 ```
-github 'nicholascross/Injectable'
+github "nicholascross/Injectable"
 ```
