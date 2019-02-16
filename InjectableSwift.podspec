@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = "InjectableSwift"
-  s.version      = "0.1.3"
+  s.version      = "0.1.4"
   s.summary      = "A Swift dependency injection container"
   s.description  = <<-DESC
                     A Swift dependency injection container which minimises the need for centralised registration
