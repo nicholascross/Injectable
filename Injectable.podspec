@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = "Injectable"
-  s.version      = "0.1.1"
+  s.version      = "0.1.2"
   s.summary      = "A Swift dependency injection container"
   s.description  = <<-DESC
                     A Swift dependency injection container which minimises the need for centralised registration
@@ -14,7 +14,7 @@ Pod::Spec.new do |s|
   s.watchos.deployment_target = "3.2"
   s.tvos.deployment_target = "11.0"
   s.source       = { :git => "https://github.com/nicholascross/Injectable.git", :tag => "#{s.version}" }
-  s.source_files  = "Injectable"
+  s.source_files  = "Injectable/**/*.swift"
   s.requires_arc = true
   s.swift_version = "4.2"
 end
