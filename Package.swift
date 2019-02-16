@@ -26,6 +26,8 @@ let package = Package(
         "komondor": [
             // When someone has run `git commit`, first run
             // run SwiftFormat and the auto-correcter for SwiftLint
+            // If there are any modifications then cancel the commit
+            // so changes can be reviewed
             "pre-commit": [
                 "find Injectable -type f -name '*.swift' -exec md5 {} ';' | md5 > .pre_format_hash",
                 "swift run swiftformat .",
