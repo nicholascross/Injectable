@@ -8,12 +8,9 @@
 
 import Foundation
 
-public protocol Injectable: InjectableObject where InjectedType == Self {
-
-}
+public protocol Injectable: InjectableObject where InjectedType == Self {}
 
 public extension Injectable {
-
     static var lifetime: Lifetime {
         guard let lifetimeInjector = Self.self as? LifetimeProviding.Type else {
             return .ephemeral

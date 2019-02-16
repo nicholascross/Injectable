@@ -7,19 +7,18 @@
 //
 
 import Foundation
-import XCTest
 @testable import Injectable
+import XCTest
 
 private class StaticSiteGenerator: Injectable, LifetimeProviding {
     static let lifetime: Lifetime = .transient
 
-    static func create(inContainer container: Container, variant: String?) -> StaticSiteGenerator {
+    static func create(inContainer _: Container, variant _: String?) -> StaticSiteGenerator {
         return StaticSiteGenerator()
     }
 }
 
 class TransientLifetimeTests: XCTestCase {
-
     private var container: DependencyContainer!
     private var webFramework1: StaticSiteGenerator?
     private weak var webFramework2: StaticSiteGenerator?

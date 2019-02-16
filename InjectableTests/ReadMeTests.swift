@@ -7,16 +7,16 @@
 //
 
 import Foundation
-import XCTest
 @testable import Injectable
+import XCTest
 
-private protocol Animal { }
+private protocol Animal {}
 private protocol Person {
     var pet: Animal { get }
 }
 
 private struct Cat: Animal, Injectable {
-    static func create(inContainer container: Container, variant: String?) -> Cat {
+    static func create(inContainer _: Container, variant _: String?) -> Cat {
         return Cat()
     }
 }
@@ -24,7 +24,7 @@ private struct Cat: Animal, Injectable {
 private struct CatPerson: Person, Injectable {
     let pet: Animal
 
-    static func create(inContainer container: Container, variant: String?) -> CatPerson {
+    static func create(inContainer container: Container, variant _: String?) -> CatPerson {
         return CatPerson(pet: container.resolve() as Cat)
     }
 
@@ -34,7 +34,6 @@ private struct CatPerson: Person, Injectable {
 }
 
 class ReadMeTests: XCTestCase {
-
     private var container: DependencyContainer!
 
     override func setUp() {

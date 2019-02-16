@@ -7,19 +7,18 @@
 //
 
 import Foundation
-import XCTest
 @testable import Injectable
+import XCTest
 
 private class StaticSiteGenerator: Injectable, LifetimeProviding {
     static let lifetime: Lifetime = .persistent
 
-    static func create(inContainer container: Container, variant: String?) -> StaticSiteGenerator {
+    static func create(inContainer _: Container, variant _: String?) -> StaticSiteGenerator {
         return StaticSiteGenerator()
     }
 }
 
 class PersistentLifetimeTests: XCTestCase {
-
     var container: DependencyContainer!
 
     override func setUp() {

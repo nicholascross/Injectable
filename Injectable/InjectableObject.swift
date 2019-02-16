@@ -17,7 +17,5 @@ public protocol InjectableObject {
 }
 
 extension InjectableObject {
-    public static func didCreate(object: InjectedType, inContainer container: Container) {
-        
-    }
+    public static func didCreate(object _: InjectedType, inContainer _: Container) {}
 }

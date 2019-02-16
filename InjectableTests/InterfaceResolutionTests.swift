@@ -7,15 +7,13 @@
 //
 
 import Foundation
-import XCTest
 @testable import Injectable
+import XCTest
 
-private protocol Planet {
-
-}
+private protocol Planet {}
 
 private class Earth: Planet, Injectable {
-    static func create(inContainer container: Container, variant: String?) -> Earth {
+    static func create(inContainer _: Container, variant: String?) -> Earth {
         if variant == "Venus" {
             return Venus()
         }
@@ -24,14 +22,12 @@ private class Earth: Planet, Injectable {
     }
 }
 
-private class Venus: Earth {
-
-}
+private class Venus: Earth {}
 
 private class Mars: Planet, Injectable {
     var inhabitted: Bool
 
-    static func create(inContainer container: Container, variant: String?) -> Mars {
+    static func create(inContainer _: Container, variant _: String?) -> Mars {
         return Mars(inhabitted: true)
     }
 
@@ -41,7 +37,6 @@ private class Mars: Planet, Injectable {
 }
 
 class InterfaceResolutionTests: XCTestCase {
-
     var container: DependencyContainer!
 
     override func setUp() {
@@ -53,7 +48,7 @@ class InterfaceResolutionTests: XCTestCase {
     }
 
     func testProtocolResolution() {
-        container.register(interface: Planet.self) { container -> Earth in return container.resolve() }
+        container.register(interface: Planet.self) { container -> Earth in container.resolve() }
         let planet: Planet = container.resolveInterface()
         XCTAssert(planet is Earth)
     }
@@ -69,5 +64,4 @@ class InterfaceResolutionTests: XCTestCase {
         let planet: Earth = container.resolveInterface()
         XCTAssert(planet is Venus)
     }
-
 }

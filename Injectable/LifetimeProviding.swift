@@ -13,7 +13,7 @@ public protocol LifetimeProviding: AnyObject {
 }
 
 public enum Lifetime {
-    case ephemeral  //always a new object
-    case transient  //a new object unless there is an instance already in memory
-    case persistent //always the same object
+    case ephemeral // always a new object
+    case transient // a new object unless there is an instance already in memory
+    case persistent // always the same object
 }

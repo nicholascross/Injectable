@@ -14,11 +14,11 @@ public protocol Container {
 }
 
 public extension Container {
-    public func resolve<Object: Injectable>() -> Object {
+    func resolve<Object: Injectable>() -> Object {
         return resolve(variant: nil)
     }
 
-    public func resolveInterface<Interface>() -> Interface! {
+    func resolveInterface<Interface>() -> Interface! {
         return resolveInterface(variant: nil)
     }
 }

@@ -7,13 +7,13 @@
 //
 
 import Foundation
-import XCTest
 @testable import Injectable
+import XCTest
 
 extension DateFormatter: Injectable, LifetimeProviding {
     public static var lifetime: Lifetime { return .persistent }
 
-    public static func create(inContainer container: Container, variant: String?) -> DateFormatter {
+    public static func create(inContainer _: Container, variant: String?) -> DateFormatter {
         guard let variant = variant else {
             return DateFormatter()
         }
@@ -25,7 +25,6 @@ extension DateFormatter: Injectable, LifetimeProviding {
 }
 
 class TypeVariantTests: XCTestCase {
-
     private var container: DependencyContainer!
 
     override func setUp() {

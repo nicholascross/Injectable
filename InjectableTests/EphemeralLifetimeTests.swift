@@ -7,11 +7,11 @@
 //
 
 import Foundation
-import XCTest
 @testable import Injectable
+import XCTest
 
 private class JavaScriptWebFramework: Injectable {
-    static func create(inContainer container: Container, variant: String?) -> JavaScriptWebFramework {
+    static func create(inContainer _: Container, variant _: String?) -> JavaScriptWebFramework {
         return JavaScriptWebFramework()
     }
 }
@@ -19,13 +19,12 @@ private class JavaScriptWebFramework: Injectable {
 private class StaticSiteGenerator: Injectable, LifetimeProviding {
     static let lifetime: Lifetime = .ephemeral
 
-    static func create(inContainer container: Container, variant: String?) -> StaticSiteGenerator {
+    static func create(inContainer _: Container, variant _: String?) -> StaticSiteGenerator {
         return StaticSiteGenerator()
     }
 }
 
 class EphemeralLifetimeTests: XCTestCase {
-
     var container: DependencyContainer!
 
     override func setUp() {
@@ -42,7 +41,6 @@ class EphemeralLifetimeTests: XCTestCase {
 
         XCTAssert(webFramework1 !== webFramework2)
     }
-
 
     func testEphemeralLifetimeWhenSpecified() {
         let webFramework1: StaticSiteGenerator = container.resolve()

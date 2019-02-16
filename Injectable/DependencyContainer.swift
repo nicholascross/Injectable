@@ -37,15 +37,15 @@ public class DependencyContainer: Container {
         register(interface: interface, implementation: implementation, variant: nil)
     }
 
-    public func register<Interface, InjectableType: Injectable>(interface: Interface.Type, implementation: InjectableType.Type, variant: String?) {
-        register(interface: interface, variant: variant) { container -> InjectableType in return container.resolve(variant: variant) }
+    public func register<Interface, InjectableType: Injectable>(interface: Interface.Type, implementation _: InjectableType.Type, variant: String?) {
+        register(interface: interface, variant: variant) { container -> InjectableType in container.resolve(variant: variant) }
     }
 
     public func register<Interface, InjectableType: Injectable>(interface: Interface.Type, _ resolver: @escaping (Container) -> InjectableType) {
         register(interface: interface, variant: nil, resolver)
     }
 
-    public func register<Interface, InjectableType: Injectable>(interface: Interface.Type, variant: String?, _ resolver: @escaping (Container) -> InjectableType) {
+    public func register<Interface, InjectableType: Injectable>(interface _: Interface.Type, variant: String?, _ resolver: @escaping (Container) -> InjectableType) {
         let key = storageKey(for: Interface.self, variant: variant)
         registeredResolvers[key] = resolver
     }
@@ -69,7 +69,7 @@ public class DependencyContainer: Container {
         }
     }
 
-    private func resolve<Object: Injectable, StoredType: AnyObject>(storage: [String: StoredType], variant: String?, boxed: Bool = false) -> Object {
+    private func resolve<Object: Injectable, StoredType: AnyObject>(storage: [String: StoredType], variant: String?) -> Object {
         return lock.synchronized {
             let key = storageKey(for: Object.self, variant: variant)
 

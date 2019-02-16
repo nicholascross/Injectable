@@ -7,16 +7,15 @@
 //
 
 import Foundation
-import XCTest
 @testable import Injectable
+import XCTest
 
 private class TestCycle: Injectable, LifetimeProviding {
-
     static let lifetime: Lifetime = .transient
 
     var startCycle: TestCycle2!
 
-    static func create(inContainer container: Container, variant: String?) -> TestCycle {
+    static func create(inContainer _: Container, variant _: String?) -> TestCycle {
         return TestCycle()
     }
 
@@ -34,13 +33,12 @@ private class TestCycle2: Injectable, LifetimeProviding {
         self.completeCycle = completeCycle
     }
 
-    static func create(inContainer container: Container, variant: String?) -> TestCycle2 {
+    static func create(inContainer container: Container, variant _: String?) -> TestCycle2 {
         return TestCycle2(completeCycle: container.resolve())
     }
 }
 
 class CycleTests: XCTestCase {
-
     var container: DependencyContainer!
 
     override func setUp() {
@@ -55,5 +53,4 @@ class CycleTests: XCTestCase {
         let objectWithCyclicDependency: TestCycle = container.resolve()
         XCTAssert(objectWithCyclicDependency.startCycle.completeCycle === objectWithCyclicDependency)
     }
-
 }
