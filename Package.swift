@@ -29,11 +29,11 @@ let package = Package(
             // If there are any modifications then cancel the commit
             // so changes can be reviewed
             "pre-commit": [
-                "find Injectable -type f -name '*.swift' -exec md5 {} ';' | md5 > .pre_format_hash",
+                "git diff --cached --name-only | xargs git diff | md5 > .pre_format_hash",
                 "swift run swiftformat .",
                 "swift run swiftlint autocorrect --path Injectable/",
-                "find Injectable -type f -name '*.swift' -exec md5 {} ';' | md5 > .post_format_hash",
-                "diff .pre_format_hash .post_format_hash > /dev/null || { echo \"File formatting modified\" ; rm .pre_format_hash ; rm .post_format_hash ; exit 1; }",
+                "git diff --cached --name-only | xargs git diff | md5 > .post_format_hash",
+                "diff .pre_format_hash .post_format_hash > /dev/null || { echo \"Staged files modified during commit\" ; rm .pre_format_hash ; rm .post_format_hash ; exit 1; }",
                 "rm .pre_format_hash ; rm .post_format_hash",
             ],
         ],
