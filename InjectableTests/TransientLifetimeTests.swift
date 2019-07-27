@@ -44,4 +44,12 @@ class TransientLifetimeTests: XCTestCase {
 
         XCTAssert(webFramework1 !== webFramework2)
     }
+
+    func testReplaceTransientStorage() {
+        let webFramework1: StaticSiteGenerator = container.resolve()
+        container.storeObject(object: StaticSiteGenerator())
+        let webFramework2: StaticSiteGenerator = container.resolve()
+
+        XCTAssert(webFramework1 !== webFramework2)
+    }
 }
