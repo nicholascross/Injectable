@@ -40,4 +40,12 @@ class PersistentLifetimeTests: XCTestCase {
 
         XCTAssertNotNil(webFramework2)
     }
+
+    func testReplacePersistentStorage() {
+        let webFramework1: StaticSiteGenerator = container.resolve()
+        container.storeObject(object: StaticSiteGenerator())
+        let webFramework2: StaticSiteGenerator = container.resolve()
+
+        XCTAssert(webFramework1 !== webFramework2)
+    }
 }

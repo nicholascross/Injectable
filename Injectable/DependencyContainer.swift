@@ -8,7 +8,7 @@
 
 import Foundation
 
-public class DependencyContainer: Container {
+public class DependencyContainer: WritableContainer {
     private var transientObjects: [String: AnyObject]
     private var persistentObjects: [String: AnyObject]
     private let lock: RecursiveLock
@@ -57,6 +57,10 @@ public class DependencyContainer: Container {
         }
 
         return resolver(self) as? Interface
+    }
+
+    public func storeObject<Object: Injectable & AnyObject>(object: Object, variant: String?) {
+        store(object: object, variant: variant)
     }
 
     func store<Object: Injectable>(object: Object, variant: String?) {

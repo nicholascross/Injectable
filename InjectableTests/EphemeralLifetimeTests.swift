@@ -48,4 +48,12 @@ class EphemeralLifetimeTests: XCTestCase {
 
         XCTAssert(webFramework1 !== webFramework2)
     }
+
+    func testNoopStoreWhenLifetimeEphemeral() {
+        let webFramework1: JavaScriptWebFramework = container.resolve()
+        container.storeObject(object: webFramework1)
+        let webFramework2: JavaScriptWebFramework = container.resolve()
+
+        XCTAssert(webFramework1 !== webFramework2)
+    }
 }

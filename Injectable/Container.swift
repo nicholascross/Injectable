@@ -22,3 +22,13 @@ public extension Container {
         return resolveInterface(variant: nil)
     }
 }
+
+public protocol WritableContainer: Container {
+    func storeObject<Object: Injectable & AnyObject>(object: Object, variant: String?)
+}
+
+public extension WritableContainer {
+    func storeObject<Object: Injectable & AnyObject>(object: Object) {
+        storeObject(object: object, variant: nil)
+    }
+}
